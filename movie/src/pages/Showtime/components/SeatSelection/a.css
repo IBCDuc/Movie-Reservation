@@ -1,0 +1,93 @@
+
+.seat-selection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e5d9d9;
+  width: 100%;
+  min-height: 700px;
+  border-radius: 10px;
+  color: white;
+  
+
+  h2 {
+    margin-bottom: 10px;
+    margin-top: 18px;
+    
+  }
+
+  .seat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    gap: 8px;
+    border-top: 1px solid #ececec;
+    
+  }
+  .seat:hover {
+    background: #1ea83c;
+    color: #fff;
+  }
+  .seat {
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    color: #1ea83c;
+    border: 1px solid #1ea83c;
+    background: #fff;
+    border-radius: 5px;
+    
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+
+    &.selected {
+      background: #1ea83c;
+      color: #fff;
+    }
+
+    &.booked {
+      background-color: red;
+      cursor: not-allowed;
+    }
+
+    &:disabled {
+      border: #e5d9d9;
+      background: #eee !important;
+      cursor: default;
+      color: #fff !important;
+    }
+  }
+
+  .screen {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f68e90;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+    color: black;
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+
+    button {
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  .pay {
+    margin-top:10px;
+  }
+}

@@ -1,0 +1,30 @@
+// ProductRow.module.scss
+
+.viewBtn {
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+  }
+  
+  .editBtn {
+    background-color: blue;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+  }
+  
+  .deleteBtn {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+  }
+  
+  .img {
+    width: 100px;
+    height: 60px;
+  }
+  

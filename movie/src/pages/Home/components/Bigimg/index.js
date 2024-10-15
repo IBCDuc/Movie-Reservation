@@ -1,10 +1,27 @@
 import styles from './bigimg.module.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import { multidisplay } from './Api';
 function Bigimg() {
     const [buttonStatus, setStatus] = useState(1);
     const liArray = [1, 2, 3, 4, 5];
     const [slideShow, setSlideShow] = useState(1);
+    const url = 'http://localhost:8000/fake-api';
+    
+    const getData = async (url) => {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+            const json = await response.json();
+            console.log(json);
+        } catch (err) {
+            console.log(`this function is err: ${err.message}`);
+        }
+    };
+    useEffect(() => {
+        getData(url);
+    }, []);
 
     useEffect(() => {
         if (buttonStatus < 1) {

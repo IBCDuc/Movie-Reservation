@@ -1,0 +1,63 @@
+.ticketHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f3ebeb;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100vw;
+    padding-left: 75px;
+
+    .showTimes {
+        display: flex;
+        gap: 10px;
+
+        .showTimeButton {
+           
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+            font-size: 14px;
+
+            &.selected {
+                background-color: #28a745;
+                color: white;
+            }
+
+            &.unavailable {
+                background-color: #f5f5f5;
+                color: #aaa;
+                cursor: not-allowed;
+            }
+
+            .label {
+                display: block;
+                font-size: 10px;
+                color: #f39c12;
+                margin-top: 2px;
+            }
+        }
+    }
+
+    .ticketCount {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        label {
+            font-size: 14px;
+
+            input {
+                width: 40px;
+                text-align: center;
+                padding: 4px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+        }
+    }
+}
