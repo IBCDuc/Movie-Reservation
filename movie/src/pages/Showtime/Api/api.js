@@ -8,7 +8,7 @@ export const showtimeApi = [
                 date: '2024-10-15',
                 times: [
                     {
-                        time: '14:00', // Khung giờ chiếu
+                        time: '04:10', // Khung giờ chiếu
                         seats: [
                             {
                                 seatNumber: 'A1',
@@ -33,7 +33,7 @@ export const showtimeApi = [
                         ],
                     },
                     {
-                        time: '18:00', // Khung giờ chiếu khác
+                        time: '07:30', // Khung giờ chiếu khác
                         seats: [
                             {
                                 seatNumber: 'B1',
@@ -57,6 +57,31 @@ export const showtimeApi = [
                             },
                         ],
                     },
+                    {
+                        time: '10:50', 
+                        seats: [
+                            {
+                                seatNumber: 'C1',
+                                price: 120000,
+                                isBooked: false,
+                            },
+                            {
+                                seatNumber: 'C2',
+                                price: 120000,
+                                isBooked: false,
+                            },
+                            {
+                                seatNumber: 'C3',
+                                price: 100000,
+                                isBooked: false,
+                            },
+                            {
+                                seatNumber: 'C4',
+                                price: 100000,
+                                isBooked: true,
+                            },
+                        ],
+                    }
                 ],
             },
             {
