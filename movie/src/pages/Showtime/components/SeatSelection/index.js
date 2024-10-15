@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import './a.css'
 import { showtimeApi } from "../../Api/api";
 import StickyFooter from "../TicketSelectedHeader/footer";
-const SeatSelection = ({ movieId, showDate }) => {
+const SeatSelection = ({ selectedTime, setSelectedTime }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showtimeData, setShowtimeData] = useState(null);
 
@@ -25,16 +25,21 @@ const SeatSelection = ({ movieId, showDate }) => {
   };
 
   const isSeatSelected = (seatNumber) => selectedSeats.includes(seatNumber);
-  console.log(showtimeApi[0].showTimes[0].times.find((item) => {
-    return item.time === '14:00'
-}))
+  
+  const timesList = showtimeApi[0].showTimes[0].times.find((item) => {
+
+    return (item.time === selectedTime)
+  })
+  
+  
+
   return (
     <div className="seat-selection-container">
       
       <h2>Select Seats</h2>
       <div className="seat-grid">
         {showtimeApi ? (
-          showtimeApi[0].showTimes[0].times[0].seats.map((seat) => (
+          timesList.seats.map((seat) => (
             <button
               key={seat.seatNumber}
               className={`seat ${seat.isBooked ? "booked" : isSeatSelected(seat.seatNumber) ? "selected" : ""}`}
