@@ -1,0 +1,28 @@
+.addToCart {
+    display: inline-flex; /* Dùng flex để căn giữa icon và text */
+    align-items: center; /* Căn giữa icon và text theo chiều dọc */
+    background: linear-gradient(to right, #b34700, #ffcc00); /* Hiệu ứng gradient */
+    color: white; /* Màu chữ */
+    border: none; /* Bỏ viền */
+    border-radius: 50px; /* Làm nút tròn các góc */
+    padding: 10px 20px; /* Tạo khoảng cách bên trong */
+    font-size: 16px; /* Kích thước chữ */
+    cursor: pointer; /* Đổi con trỏ chuột thành hand khi hover */
+    transition: background 0.3s ease; /* Hiệu ứng chuyển màu khi hover */
+  }
+  
+  .addToCart .icon {
+    margin-right: 8px; /* Khoảng cách giữa icon và text */
+  }
+  
+  .addToCart:hover {
+    background: linear-gradient(to right, #cc5200, #ff9900); /* Thay đổi màu khi hover */
+  }
+  
+  .buyWrapper {
+    margin-top: 20px;
+  }
+  .revenue {
+    position: absolute;
+    right: 10%;
+  }

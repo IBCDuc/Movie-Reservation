@@ -1,0 +1,95 @@
+.dashboard {
+  padding: 20px;
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  width: 180px;
+  height: 150px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  
+  & h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  & p {
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  &:nth-child(1) {
+    background-color: #8e44ad; // Purple for comments
+  }
+
+  &:nth-child(2) {
+    background-color: #27ae60; // Green for users
+  }
+
+  &:nth-child(3) {
+    background-color: #e67e22; // Orange for sales
+  }
+
+  &:nth-child(4) {
+    background-color: #3498db; // Blue for videos
+  }
+
+  .progress-bar {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 5px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+    
+    .progress {
+      height: 100%;
+      background-color: #fff;
+      width: 40%; // Customize width based on the stats
+    }
+    .progress2 {
+      height: 100%;
+      background-color: #fff;
+      width: 60%; // Customize width based on the stats
+    }
+    .progress3 {
+      height: 100%;
+      background-color: #fff;
+      width: 80%; // Customize width based on the stats
+    }
+    .progress4 {
+      height: 100%;
+      background-color: #fff;
+      width: 20%; // Customize width based on the stats
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 32px;
+    opacity: 0.1;
+  }
+}

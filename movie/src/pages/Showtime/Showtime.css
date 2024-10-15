@@ -1,7 +1,7 @@
 .movieSeatSelection {
     display: flex;
     gap: 35px;
-    min-height: 1000px;
+    margin-bottom: 80px;
 }
 .movieSeatSelection img {
     height: 588px;
@@ -25,13 +25,13 @@
 }
 
 .seatGrid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    
+    
 }
 
-.seatRow {
-    display: flex;
-}
+
 
 .seat {
     width: 50px;

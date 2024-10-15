@@ -44,10 +44,6 @@ function Header() {
                         </li>
                     </ul>
                 </nav>
-                <div className={img.logwrapper}>
-                          <span>Admin</span>
-                          <button class="logout-btn">Logout</button>
-                </div>
             </div>
         </header>
     );

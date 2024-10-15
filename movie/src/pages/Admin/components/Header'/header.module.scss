@@ -20,7 +20,7 @@
     width: 130px;
     height: 35px;
     margin-top: 10px;
-    margin-right: 220px;
+    margin-right: 310px;
 }
 
 nav ul {
@@ -56,10 +56,4 @@ nav ul li a.active::after {
     position: absolute;
     bottom: -5px;
     left: 0;
-}
-
-.logwrapper {
-    margin-left: 50px;
-    display: flex;
-    align-items: center;
 }
