@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './a.css'
 import { showtimeApi } from "../../Api/api";
 import StickyFooter from "../TicketSelectedHeader/footer";
+import { ThemeContext } from "~/ShowtimeSContext";
+
+
 const SeatSelection = ({ selectedTime, setSelectedTime }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showtimeData, setShowtimeData] = useState(null);
-
+  const {showtimeSelection, setShowtimeSelection} = useContext(ThemeContext)
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
   // Tìm dữ liệu chiếu phim dựa trên movieId và ngày chiếu
   /* useEffect(() => {
     const movie = showtimeApi.find((m) => m.movieId === movieId);
@@ -26,10 +32,12 @@ const SeatSelection = ({ selectedTime, setSelectedTime }) => {
 
   const isSeatSelected = (seatNumber) => selectedSeats.includes(seatNumber);
   
-  const timesList = showtimeApi[0].showTimes[0].times.find((item) => {
+  const timesList = showtimeSelection.times.find((item) => {
 
     return (item.time === selectedTime)
   })
+
+  
   
   
 

@@ -5,9 +5,11 @@ export const showtimeApi = [
         movieImg: 'https://i.imghippo.com/files/wt8T01727534685.jpg',
         showTimes: [
             {
-                date: '2024-10-15',
+                date: 'June 10, 2024',
                 times: [
                     {
+                        label: 'KOTAK INSIGNIA',
+                        available: true,
                         time: '04:10', // Khung giờ chiếu
                         seats: [
                             {
@@ -33,6 +35,7 @@ export const showtimeApi = [
                         ],
                     },
                     {
+                        available: true,
                         time: '07:30', // Khung giờ chiếu khác
                         seats: [
                             {
@@ -58,6 +61,7 @@ export const showtimeApi = [
                         ],
                     },
                     {
+                        available: false,
                         time: '10:50', 
                         seats: [
                             {
@@ -85,9 +89,11 @@ export const showtimeApi = [
                 ],
             },
             {
-                date: '2024-10-16',
+                date: 'June 11, 2024',
                 times: [
                     {
+                        label: "KOTSUTAN",
+                        available: true,
                         time: '12:00',
                         seats: [
                             {
@@ -113,6 +119,7 @@ export const showtimeApi = [
                         ],
                     },
                     {
+                        available: true,
                         time: '20:00',
                         seats: [
                             {
@@ -150,6 +157,7 @@ export const showtimeApi = [
                 date: '2024-10-20',
                 times: [
                     {
+                        available: true,
                         time: '10:00',
                         seats: [
                             {
@@ -175,6 +183,7 @@ export const showtimeApi = [
                         ],
                     },
                     {
+                        available: true,
                         time: '15:00',
                         seats: [
                             {

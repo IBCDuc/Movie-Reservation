@@ -7,7 +7,7 @@ import ShowtimeHeader from '~/pages/Showtime/components/TicketSelectedHeader/hea
 function DefaultLayoutShowtime() {
     return (
         <div className= {layoutmodule.wrapper}>
-            <ShowtimeHeader />
+            
             <div className={layoutmodule.Content}>
                 <Showtime />
             </div>

@@ -5,17 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyle from '~/components/GlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
+import ShowtimeSelection from './ShowtimeSContext';
 import Url from './UseContext';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Url>
-            <BrowserRouter>
-                <GlobalStyle>
-                    <App />
-                </GlobalStyle>
-            </BrowserRouter>
-        </Url>
+        <ShowtimeSelection>
+            <Url>
+                <BrowserRouter>
+                    <GlobalStyle>
+                        <App />
+                    </GlobalStyle>
+                </BrowserRouter>
+            </Url>
+        </ShowtimeSelection>
     </React.StrictMode>,
 );
 
