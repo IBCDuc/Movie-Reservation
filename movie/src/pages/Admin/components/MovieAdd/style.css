@@ -1,6 +1,5 @@
 .movie-form {
-    width: 890px;
-    margin: 0 auto;
+    width: 1156px;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -84,19 +83,19 @@
 
 .row-one {
     display: flex;
-    gap:25px;
+    gap:75px;
 }
 
 .row-one .form-row {
-    width: 270px;
+    width: 320px;
 }
 
 .row-two {
     display: flex;
-    gap:25px;
+    gap:75px;
 }
 .row-two .form-row {
-    width: 270px;
+    width: 350px;
 }
 
 

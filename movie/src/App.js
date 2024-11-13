@@ -6,18 +6,30 @@ import { Route, Routes } from 'react-router-dom';
 import DefaultLayoutShowtime from './components/Layout/DeufaultLayout-Showtime';
 import { useState } from 'react';
 
+import Home from './pages/Home';
+import Movie from './pages/Movie';
+import SingleMovie from './pages/SingleMovie';
+import Showtime from './pages/Showtime';
+import Admin from './pages/Admin';
+import MovieAdd from './pages/Admin/components/MovieAdd';
+import DashboardLayoutBasic from './pages/Admin/components/Sidebar';
+import SignupForm from './TestFomik';
 function App() {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<DefaultLayout />} />
-                <Route path="/movie" element={<DefaultLayoutsMovie />} />
-                <Route path="/single-movie" element={<DefaultLayoutsSingle />} />
-                <Route path="/show-time" element={<DefaultLayoutShowtime />} />
-                <Route path="/admin">
-                    <Route path="" element={<DefaultLayoutsAdmin />} />
-                    <Route path="movies" element={<DefaultLayout />} />
+                <Route path="/" element={<DefaultLayout />}>
+                    <Route path="" element={<Home />} />
+                    <Route path="/movie" element={<Movie />} />
+                    <Route path="/single-movie/:id" element={<SingleMovie />} />
                 </Route>
+
+                <Route path="/admin">
+                    <Route path="" element={<DashboardLayoutBasic />} />
+                    <Route path="movies" element={<DashboardLayoutBasic />} />
+                </Route>
+
+                <Route path="/show-time" element={<Showtime/>} />
             </Routes>
             ;
         </div>

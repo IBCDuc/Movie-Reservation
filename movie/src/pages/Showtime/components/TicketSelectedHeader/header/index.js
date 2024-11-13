@@ -3,7 +3,6 @@ import { useContext, useState, useLayoutEffect} from 'react';
 import { showtimeApi } from '~/pages/Showtime/Api/api';
 import { ThemeContext } from '~/ShowtimeSContext';
 function ShowtimeHeader( {selectedTime, setSelectedTime} ) {
-
     
     const {showtimeSelection, setShowtimeSelection} = useContext(ThemeContext)
     
@@ -14,6 +13,7 @@ function ShowtimeHeader( {selectedTime, setSelectedTime} ) {
     const handletimeList = () => {
         setSelectedTime(dateList.times[0].time)
     }
+    handletimeList()
 
     const timeList = dateList.times.find((item) => {
         

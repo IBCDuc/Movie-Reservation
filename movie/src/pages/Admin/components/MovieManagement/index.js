@@ -40,13 +40,13 @@ const MovieManagement = () => {
       <table>
         <thead>
           <tr>
-            <th>_id</th>
+            <th>Id</th>
             <th>Categories</th>
-            <th>name</th>
-            <th>reservetion</th>
-            <th>revenue</th>
-            <th>seat</th>
-            <th>image</th>
+            <th>Name</th>
+            <th>Reservetion</th>
+            <th>Revenue</th>
+            <th>Seat</th>
+            <th>Image</th>
             <th>Created At</th>
             <th>Actions</th>
           </tr>

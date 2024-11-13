@@ -9,6 +9,7 @@ const SeatSelection = ({ selectedTime, setSelectedTime }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showtimeData, setShowtimeData] = useState(null);
   const {showtimeSelection, setShowtimeSelection} = useContext(ThemeContext)
+  const [price, setPrice] = useState(0)
   useEffect(() => {
     window.scrollTo(0, 0); 
   }, []);
@@ -22,11 +23,14 @@ const SeatSelection = ({ selectedTime, setSelectedTime }) => {
   }, [movieId, showDate]); */
 
   // Toggle chọn hoặc bỏ chọn ghế
-  const toggleSeat = (seatNumber) => {
+  const toggleSeat = (seatNumber, seatPrice) => {
+    
     if (selectedSeats.includes(seatNumber)) {
       setSelectedSeats(selectedSeats.filter((seat) => seat !== seatNumber));
+      setPrice(prev => prev - seatPrice )
     } else {
       setSelectedSeats([...selectedSeats, seatNumber]);
+      setPrice(prev => prev + seatPrice )
     }
   };
 
@@ -38,9 +42,6 @@ const SeatSelection = ({ selectedTime, setSelectedTime }) => {
   })
 
   
-  
-  
-
   return (
     <div className="seat-selection-container">
       
@@ -52,7 +53,7 @@ const SeatSelection = ({ selectedTime, setSelectedTime }) => {
               key={seat.seatNumber}
               className={`seat ${seat.isBooked ? "booked" : isSeatSelected(seat.seatNumber) ? "selected" : ""}`}
               disabled={seat.isBooked}
-              onClick={() => toggleSeat(seat.seatNumber)}
+              onClick={() => toggleSeat(seat.seatNumber, seat.price)}
             >
               <i class="fa-solid fa-chair" style={{color: "#393a3c", display: "block"}}/>
               {seat.seatNumber}
@@ -64,7 +65,7 @@ const SeatSelection = ({ selectedTime, setSelectedTime }) => {
         )}
       </div>
       <div className="screen">Just a movie</div>
-      <div className='pay'><h3>Pay: 10$</h3></div>
+      <div className='pay'><h3>Pay: {price}$</h3></div>
       <div className="actions">
         <button onClick={() => console.log(selectedSeats)}>Buy</button>
         <button onClick={() => console.log("Reservar")}>Cancel</button>

@@ -1,15 +1,26 @@
 import Slider from 'react-slick/lib/slider';
 import styles from './SingleMovie.module.scss';
 import { useState } from 'react';
+import { useParams  } from 'react-router-dom';
 import React from 'react';
 import { Cinema } from './Api';
 import Comment from './components/Comment';
 import TicketSchedule from './components/ShowtimeList';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import useFetchMoviesById from '~/api/useFetchMoviesById';
+import Loading from '~/components/Layout/components/Loading/loading';
 
 function SingleMovie() {
+    const { data: data, loading, error } = useFetchMoviesById()
     const [style, setstyle] = useState(-1)
+    if (loading) {
+        return (
+            <Loading />
+        )
+    }
+    
+    // fetch in here!
     var settings = {
         infinite: true,
         autoplaySpeed: 3500,
@@ -31,10 +42,10 @@ function SingleMovie() {
             </div>
             <div className={styles.wrapper}>
                 <div className={styles.poster}>
-                    <img src="https://i.imghippo.com/files/wt8T01727534685.jpg" alt="Movie Poster" />
+                    <img src={data.img_url} alt="Movie Poster" />
                 </div>
                 <div className={styles.details}>
-                    <h1>Kubo and the Two Strings</h1>
+                    <h1>{data.movie_name}</h1>
                     <div className={styles.info}>
                         <span>G</span>
                         <span>02 hours 00 minutes</span>
@@ -45,16 +56,16 @@ function SingleMovie() {
                             <strong>Director:</strong> Grace Belly, Mae West
                         </p>
                         <p>
-                            <strong>Genre:</strong> Cartoon, Comic
+                            <strong>Genre:</strong> {data.genre}
                         </p>
                         <p>
-                            <strong>Release:</strong> February 15, 2022
+                            <strong>Release:</strong> {data.date}
                         </p>
                         <p>
-                            <strong>Language:</strong> English
+                            <strong>Language:</strong> {data.language}
                         </p>
                         <p>
-                            <strong>IMDB Rating:</strong> 8.5
+                            <strong>Star:</strong> {data.star}
                         </p>
                     </div>
                 </div>
@@ -69,9 +80,7 @@ function SingleMovie() {
                 <hr />
                 <h2>Synopsis</h2>
                 <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                    dicta sunt explicabo.
+                    {data.description}
                 </p>
                 <p>
                     Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
@@ -101,7 +110,7 @@ function SingleMovie() {
                             <img src="http://demo.amytheme.com/movie/demo/elementor-multi-cinema/wp-content/uploads/sites/3/2022/05/img_22.jpg" />
                         </div>
                         <div>
-                            <img src="https://i.imghippo.com/files/wt8T01727534685.jpg" />
+                            <img src={data.img_url} />
                         </div>
                         <div>
                             <img src="http://demo.amytheme.com/movie/demo/elementor-multi-cinema/wp-content/uploads/sites/3/2022/05/img_22.jpg" />

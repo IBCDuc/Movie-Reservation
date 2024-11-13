@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import './MovieCarousel.css'; // Import your CSS file
 import { movies } from './Api';
-
-const MovieCarousel = () => {
+import { Link } from 'react-router-dom';
+const MovieCarousel = ( {data} ) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const moviesToShow = 9; // Số lượng movie card muốn hiển thị
 
     const nextMovie = () => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % movies.length);
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
     };
 
     const prevMovie = () => {
-        setCurrentIndex((prevIndex) => (prevIndex - 1 + movies.length) % movies.length);
+        setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
     };
 
     const getMoviesToDisplay = () => {
-        return movies
+        return data
             .slice(currentIndex, currentIndex + moviesToShow)
-            .concat(movies.slice(0, Math.max(0, currentIndex + moviesToShow - movies.length)));
+            .concat(data.slice(0, Math.max(0, currentIndex + moviesToShow - data.length)));
     }; 
 
     
@@ -38,10 +38,10 @@ const MovieCarousel = () => {
                 <div className="movie-cards">
                     {getMoviesToDisplay().map((movie, index) => (
                         <div key={index} className={`movie-card ${index === 4 ? 'active' : ''}`}>
-                            <img src={movie.poster} alt={movie.title} />
+                            <Link to={`/single-movie/${movie.movie_id}`}><img src={movie.img_url} /></Link>
                             <div className={`content-slider ${index === 4 ? 'active' : ''}`}>
-                                <p style={{fontSize: '20px'}}>{movie.title}</p>
-                                <p style={{fontSize: '12px'}}>Release: {movie.releaseDate}</p>
+                                <p style={{fontSize: '20px'}}>{movie.movie_name}</p>
+                                <p style={{fontSize: '12px'}}>Release: {movie.movie_date}</p>
                                 <div className='a-content'>
                                     <a href="/">
                                             <span style={{fontSize: '12px'}}>

@@ -5,16 +5,29 @@ import MovieCarousel from './components/Test';
 import Vid from './components/Vid-Photo';
 import LastestNews from './components/LastestNews';
 import layoutmodule from './Movie.module.scss'
+import { useEffect } from 'react';
+import useFetchMovies from '~/api/useFetchMovies';
+import Loading from '~/components/Layout/components/Loading/loading';
+import { ThemeContext } from '~/ShowtimeSContext';
+import { useContext } from 'react';
 function Home() {
+    const { data: data, loading, error } = useFetchMovies()
+    const { showtimeSelection, setShowtimeSelection } = useContext(ThemeContext);
+    console.log(showtimeSelection)
+    if (loading) {
+        return (
+            <Loading />
+        )
+    }
     return (
         <div className="homeWrapper">
             <Bigimg />
             <div className={layoutmodule.container}>
                 <Content />
-                <Articlemovie />
+                <Articlemovie data={data} />
             </div>
             <div className={layoutmodule.Carousel}>
-                <MovieCarousel />
+                <MovieCarousel data={data} />
             </div>
             <div className={layoutmodule.vidContainer}>
                 <Vid />
