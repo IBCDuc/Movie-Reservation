@@ -17,7 +17,7 @@ function Movies( {data} ) {
                     <img src='https://c7.alamy.com/comp/2C7WH0B/interstellar-2014-directed-by-christopher-nolan-and-starring-matthew-mcconaughey-anne-hathaway-jessica-chastain-and-john-lithgow-in-a-dystopian-future-astronauts-explore-a-wormhole-in-space-in-search-for-a-new-home-for-mankind-in-a-distant-galaxy-2C7WH0B.jpg'/>
                 </div>
                 <h2>Top Movie</h2>
-                {data.map((item) => (
+                {data?.map((item) => (
                     <div key={item.id} className={styles.sideEachMovie}>
                         <div className={styles.imgSideContent}>
                             <img src={item.img_url} alt={item.movie_name} />

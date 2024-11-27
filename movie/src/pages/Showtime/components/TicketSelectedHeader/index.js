@@ -31,7 +31,7 @@ const TicketHeader = ({ selectedTime, setSelectedTime }) => {
     <div className={sty.ticketHeader}>
       
       <div className={sty.showTimes}>
-        {showtimeSelection.times.map((time, index) => (
+        {showtimeSelection?.times.map((time, index) => (
           <button
             key={index}
             className={`${sty.showTimeButton} ${time.available ? '' : sty.unavailable} ${time.time === selectedTime ? sty.selected : ''}`}

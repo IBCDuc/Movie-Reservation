@@ -38,7 +38,7 @@ const MyReservations = () => {
         <div className="reservations">
             <h1>My Reservations</h1>
             <div className="reservation-grid">
-                {reservations.map(reservation => (
+                {reservations?.map(reservation => (
                     <div key={reservation.id} className="reservation-card">
                         <img src={reservation.imageUrl} alt={reservation.title} className="movie-poster" />
                         <div className="reservation-info">

@@ -17,11 +17,12 @@ function Showtime() {
     const [loading, setLoading] = useState(false);
     const [isReloading, setIsReloading] = useState(false);
     const navigate = useNavigate()
-    setSelectedTime(showtimeSelection)
+    
     
     useEffect(() => {
+        console.log(selectedTime)
         setTimeout(() => {
-            if (!selectedTime) {
+            if (selectedTime) {
                 setLoading(true);
             }
         }, 500)

@@ -1,56 +1,84 @@
-import './header.module.scss';
-import img from './header.module.scss';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { useContext } from 'react';
-import { ThemeContext, Url } from '~/UseContext';
-function Header() {
-    const {url, seturl} = useContext(ThemeContext)
-    const handlerClick = (props) => {
-        seturl(props);
-    };
+import React, { useState, useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Avatar, Dropdown, Space, message } from "antd";
+import { DownOutlined } from "@ant-design/icons"
+import { ThemeContext } from "~/UseContext";
+ import { doLogoutAction } from "~/redux/account/accountSlice";
+import styles from "./header.module.scss";
 
-    return (
-        <header className={img.wrapper}>
-            <div className={img.inner}>
-                <div class={img.logo}>
-                    <img src="https://i.imghippo.com/files/grryP1727434394.png"></img>
-                </div>
+const Header = () => {
+  const { url, seturl } = useContext(ThemeContext);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.account.user);
+  const role = useSelector((state) => state.account.role);
 
-                <nav>
-                    <ul>
-                        <li onClick={() => handlerClick('/')}>
-                            <Link to="/" className={url === '/' ? `${img.active}` : ''}>
-                                HOME
-                            </Link>
-                        </li>
-                        <li onClick={() => handlerClick('/movie')}>
-                            <Link to="/movie" className={url === '/movie' ? `${img.active}` : ''}>
-                                MOVIE
-                            </Link>
-                        </li>
-                        <li onClick={() => handlerClick('/single-movie')}>
-                            <Link to="/single-movie" className={url === '/single-movie' ? `${img.active}` : ''}>
-                                SINGLE MOVIE
-                            </Link>
-                        </li>
-                        <li onClick={() => handlerClick('/show-time')}>
-                            <Link to="/show-time" className={url === '/show-time' ? `${img.active}` : ''}>
-                                SHOWTIME
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="top-rate">TOP RATED</Link>
-                        </li>
-                    </ul>
-                </nav>
-                <div className={img.logwrapper}>
-                          <span>Admin</span>
-                          <button class="logout-btn">Logout</button>
-                </div>
-            </div>
-        </header>
-    );
-}
+  const handleLogout = () => {
+    dispatch(doLogoutAction());
+    message.success("Đã đăng xuất thành công");
+    navigate("/");
+  };
+
+  const menuItems = [
+    {
+      label: <Link to="/" className={url === "/" ? styles.active : ""}>HOME</Link>,
+      key: "home",
+    },
+    {
+      label: <Link to="/movie" className={url === "/movie" ? styles.active : ""}>MOVIE</Link>,
+      key: "movie",
+    },
+    {
+      label: <Link to="/single-movie" className={url === "/single-movie" ? styles.active : ""}>SINGLE MOVIE</Link>,
+      key: "singleMovie",
+    },
+    {
+      label: <Link to="/show-time" className={url === "/show-time" ? styles.active : ""}>SHOWTIME</Link>,
+      key: "showTime",
+    },
+    {
+      label: <Link to="/top-rate">TOP RATED</Link>,
+      key: "topRated",
+    },
+  ];
+
+  if (role === "admin") {
+    menuItems.push({
+      label: <span onClick={handleLogout} style={{ cursor: "pointer" }}>Logout</span>,
+      key: "logout",
+    });
+  }
+
+  return (
+    <header className={styles.wrapper}>
+      <div className={styles.inner}>
+        <div className={styles.logo}>
+          <img src="https://i.imghippo.com/files/grryP1727434394.png" alt="Logo" />
+        </div>
+        <nav>
+          <ul className={styles.navList}>
+            {menuItems.map((item) => (
+              <li key={item.key} onClick={() => seturl(item.key)}>
+                {item.label}
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <div className={styles.logWrapper}>
+          <Dropdown overlay={{ items: menuItems }} trigger={["click"]}>
+            <a onClick={(e) => e.preventDefault()}>
+              <Space>
+                <Avatar src={user?.avatar} />
+                {user?.display_name || "Admin"}
+                <DownOutlined />
+              </Space>
+            </a>
+          </Dropdown>
+        </div>
+      </div>
+    </header>
+  );
+};
 
 export default Header;

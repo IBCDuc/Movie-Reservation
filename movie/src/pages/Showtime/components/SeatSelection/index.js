@@ -48,7 +48,7 @@ const SeatSelection = ({ selectedTime, setSelectedTime }) => {
       <h2>Select Seats</h2>
       <div className="seat-grid">
         {showtimeApi ? (
-          timesList.seats.map((seat) => (
+          timesList?.seats?.map((seat) => (
             <button
               key={seat.seatNumber}
               className={`seat ${seat.isBooked ? "booked" : isSeatSelected(seat.seatNumber) ? "selected" : ""}`}

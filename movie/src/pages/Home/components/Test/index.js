@@ -36,7 +36,7 @@ const MovieCarousel = ( {data} ) => {
             <div className="carousel-container">
                 <h2>Top Movies in Theatres</h2>
                 <div className="movie-cards">
-                    {getMoviesToDisplay().map((movie, index) => (
+                    {getMoviesToDisplay()?.map((movie, index) => (
                         <div key={index} className={`movie-card ${index === 4 ? 'active' : ''}`}>
                             <Link to={`/single-movie/${movie.movie_id}`}><img src={movie.img_url} /></Link>
                             <div className={`content-slider ${index === 4 ? 'active' : ''}`}>

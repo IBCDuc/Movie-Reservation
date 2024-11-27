@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Articlemovie( {data}  ) {
     return (
         <div className={styles.wrapper}>
-            {data.map((item) => {
+            {data?.map((item) => {
                 return (
                     <div className={styles.data}>
                         <article>

@@ -25,7 +25,7 @@ function Items({ currentItems, data }) {
     return (
         <div className={styles.Movies}>
             <MovieFilter categories={categories} onFilter={filterMovies} />
-            {filteredMovies.map((item,index) => {
+            {filteredMovies?.map((item,index) => {
                 return (
                     <div key ={index} className={styles.EachMovie}>
                         <div className={styles.imgContent}>
