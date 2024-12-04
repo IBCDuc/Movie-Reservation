@@ -5,7 +5,7 @@ import Home from '~/pages/Home';
 import Movie from '~/pages/Movie';
 import PaginatedItems from '~/pages/Movie/components/Pagnigation';
 import SingleMovie from '~/pages/SingleMovie';
-
+import MyReservations from '~/pages/Reservation';
 function DefaultLayoutsMovie() {
     return (
         <div className= {layoutmodule.wrapper}>

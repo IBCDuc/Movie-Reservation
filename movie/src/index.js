@@ -5,17 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import GlobalStyle from '~/components/GlobalStyle';
 import { BrowserRouter } from 'react-router-dom';
+import ShowtimeSelection from './ShowtimeSContext';
 import Url from './UseContext';
+import { store } from './redux/store'
+import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Url>
-            <BrowserRouter>
-                <GlobalStyle>
-                    <App />
-                </GlobalStyle>
-            </BrowserRouter>
-        </Url>
+        <ShowtimeSelection>
+            <Url>
+            <Provider store = {store}>
+                    <GlobalStyle>
+                        <App />
+                    </GlobalStyle>
+            </Provider>
+            </Url>
+        </ShowtimeSelection>
     </React.StrictMode>,
 );
 

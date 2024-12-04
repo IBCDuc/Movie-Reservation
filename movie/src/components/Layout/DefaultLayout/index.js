@@ -7,12 +7,13 @@ import PaginatedItems from '~/pages/Movie/components/Pagnigation';
 import SingleMovie from '~/pages/SingleMovie';
 import Showtime from '~/pages/Showtime';
 import Admin from '~/pages/Admin';
+import { Outlet } from 'react-router-dom';
 function DefaultLayouts() {
     return (
         <div className= {layoutmodule.wrapper}>
             <Header/>
             <div className={layoutmodule.Content}>
-                <Home />
+                <Outlet />
             </div>
             <Footer />
         </div>

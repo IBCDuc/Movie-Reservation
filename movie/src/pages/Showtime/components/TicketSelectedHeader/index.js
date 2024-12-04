@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import sty from './TicketHeader.module.scss'; // SCSS module
 import { showtimeApi } from '../../Api/api';
+import { ThemeContext } from '~/ShowtimeSContext';
 const TicketHeader = ({ selectedTime, setSelectedTime }) => {
   
   const [ticketCount, setTicketCount] = useState(3);
-
+  const { showtimeSelection, setShowtimeSelection } = useContext(ThemeContext);
+  console.log(showtimeSelection)
+  // cần loại bỏ
   const times = [
     { time: '04:10', available: true, highlight: true },
     { time: '06:40', available: false, label: 'KOTAK INSIGNIA' },
@@ -28,7 +31,7 @@ const TicketHeader = ({ selectedTime, setSelectedTime }) => {
     <div className={sty.ticketHeader}>
       
       <div className={sty.showTimes}>
-        {times.map((time, index) => (
+        {showtimeSelection?.times.map((time, index) => (
           <button
             key={index}
             className={`${sty.showTimeButton} ${time.available ? '' : sty.unavailable} ${time.time === selectedTime ? sty.selected : ''}`}

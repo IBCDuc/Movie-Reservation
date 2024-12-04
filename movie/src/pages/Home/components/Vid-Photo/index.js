@@ -16,17 +16,17 @@ function Vid() {
             <div className={styles.grid2}>
                 <div className={styles.row1}>
                     <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
-                    <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
-                    <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
+                    <img src="http://demo.amytheme.com/movie/demo/elementor-single-cinema/wp-content/uploads/sites/2/2022/05/img_58.jpg" />
+                    <img src="http://demo.amytheme.com/movie/demo/elementor-single-cinema/wp-content/uploads/sites/2/2022/05/img_57.jpg" />
                 </div>
                 <div className={styles.row2}>
-                    <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
-                    <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
-                    <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
+                    <img src="http://demo.amytheme.com/movie/demo/elementor-single-cinema/wp-content/uploads/sites/2/2022/05/img_55.jpg" />
+                    <img src="http://demo.amytheme.com/movie/demo/elementor-single-cinema/wp-content/uploads/sites/2/2022/05/img_54.jpg" />
+                    <img src="http://demo.amytheme.com/movie/demo/elementor-single-cinema/wp-content/uploads/sites/2/2022/05/img_53.jpg" />
                 </div>
                 <div className={styles.row3}>
-                    <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
-                    <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
+                    <img src="http://demo.amytheme.com/movie/demo/elementor-single-cinema/wp-content/uploads/sites/2/2022/05/img_52.jpg" />
+                    <img src="http://demo.amytheme.com/movie/demo/elementor-single-cinema/wp-content/uploads/sites/2/2022/05/img_58.jpg" />
                     <img src="https://i.ibb.co/JzxTJSr/img-60.jpg" />
                 </div>
             </div>

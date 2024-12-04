@@ -7,13 +7,11 @@ import PaginatedItems from '~/pages/Movie/components/Pagnigation';
 import SingleMovie from '~/pages/SingleMovie';
 import Admin from '~/pages/Admin';
 import MovieAdd from '~/pages/Admin/components/MovieAdd';
+import { Outlet } from 'react-router-dom';
 function DefaultLayoutsAdmin() {
     return (
         <div className= {layoutmodule.wrapper}>
-            <Header />
-            <div className={layoutmodule.Content}>
-                <Admin   />
-            </div>
+            <Outlet />
             <Footer />
         </div>
     );

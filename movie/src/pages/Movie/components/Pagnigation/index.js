@@ -3,38 +3,60 @@ import ReactDOM from 'react-dom';
 import ReactPaginate from 'react-paginate';
 import { articleitem } from './Api';
 // Example items, to simulate fetching from another resources.
-import styles from './pagnigationM.module.scss'
-import './stylepage.scss'
+import styles from './pagnigationM.module.scss';
+import './stylepage.scss';
+import MovieFilter from '../Filter';
+import { Link } from 'react-router-dom';
+import useFetchMovies from '~/api/useFetchMovies';
+function Items({ currentItems, data }) {
+    
+    const [filteredMovies, setFilteredMovies] = useState(data); // Lưu trữ danh sách phim đã lọc
+    const categories = ['Adventure', 'Drama', 'Thriller', 'Sci-Fi']; // Các thể loại phim có thể lọc
 
-function Items({ currentItems }) {
+    const filterMovies = (category) => {
+        if (category === '') {
+            setFilteredMovies(currentItems); // Hiển thị tất cả phim nếu không chọn danh mục
+        } else {
+            const filtered = currentItems.filter((item) => item.genre === category);
+            setFilteredMovies(filtered);
+        }
+    };
+
     return (
         <div className={styles.Movies}>
-            {currentItems.map((item) => {
+            <MovieFilter categories={categories} onFilter={filterMovies} />
+            {filteredMovies?.map((item,index) => {
                 return (
-                    <div className={styles.EachMovie}>
+                    <div key ={index} className={styles.EachMovie}>
                         <div className={styles.imgContent}>
-                            <img src={item.img} />
+                            <Link to={`/single-movie/${item.movie_id}`}><img src={item.img_url} /></Link>
                         </div>
+                        <div className={styles.info}>
+                        <Link to={`/single-movie/${item.movie_id}`}><h1>{item.movie_name}</h1></Link>
                         <div className={styles.content}>
-                            <h2>Angry birds</h2>
-                            <h2>Duration: {item.Duration}</h2>
-                            <div className={styles.smallContent}>
-                                <p>Actor: </p>
-                                <p>
-                                    Genre: &nbsp;&nbsp; <a>{item.genre}</a>
-                                </p>
-                                <p>
-                                    Release: &nbsp;&nbsp;<a>12</a>
-                                </p>
-                                <p>
-                                    Language: &nbsp;&nbsp;<a>{item.Language}</a>
-                                </p>
-                                <p>
-                                    Genre: &nbsp;&nbsp;<a>{item.genre}</a>
-                                </p>
-                                <h3>Showtime</h3>
-                            </div>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, ...</p>
                         </div>
+                        <span>G</span>
+                        <span>{item.duration}</span>
+                        <p>
+                            <strong>Actors:</strong> Alexander Catty, Cartin Hollia, Greta Garbo
+                        </p>
+                        <p>
+                            <strong>Director:</strong> Grace Belly, Mae West
+                        </p>
+                        <p>
+                            <strong>Genre:</strong> {item.genre}
+                        </p>
+                        <p>
+                            <strong>Release:</strong> {item.movie_date}
+                        </p>
+                        <p>
+                            <strong>Language:</strong> {item.language}
+                        </p>
+                        <p>
+                            <strong>IMDB Rating:</strong> 8.5
+                        </p>
+                    </div>
                     </div>
                 );
             })}
@@ -42,29 +64,37 @@ function Items({ currentItems }) {
     );
 }
 
-function PaginatedItems({ itemsPerPage }) {
+function PaginatedItems( { itemsPerPage, data} ) {
     // Here we use item offsets; we could also use page offsets
     // following the API or data you're working with.
+    
     const [itemOffset, setItemOffset] = useState(0);
 
     // Simulate fetching items from another resources.
     // (This could be items from props; or items loaded in a local state
     // from an API endpoint with useEffect and useState)
+    
+    // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    
+        
+    
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    const currentItems = articleitem.slice(itemOffset, endOffset);
-    const pageCount = Math.ceil(articleitem.length / itemsPerPage);
+    const currentItems = data.slice(itemOffset, endOffset);
+    const pageCount = Math.ceil(data.length / itemsPerPage);
+    
+
+    
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemsPerPage) % articleitem.length;
+        const newOffset = (event.selected * itemsPerPage) % data.length;
         console.log(`User requested page number ${event.selected}, which is offset ${newOffset}`);
         setItemOffset(newOffset);
     };
 
     return (
         <div className={styles.pagnigation}>
-            <Items currentItems={currentItems} />
+            <Items currentItems={currentItems} data={data}/>
             <ReactPaginate
                 breakLabel="..."
                 nextLabel="Next"

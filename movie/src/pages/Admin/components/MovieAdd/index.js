@@ -2,7 +2,7 @@ import './style.css'
 function MovieAdd() {
     return (
         <section class="movie-form">
-            <h1>Manage Movie</h1>
+            <h1>Add Movie</h1>
             <form>
                 <div class ="row-one">
                     <div class="form-row">

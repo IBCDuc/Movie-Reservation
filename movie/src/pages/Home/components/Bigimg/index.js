@@ -52,7 +52,7 @@ function Bigimg() {
                 &lt;
             </button>
 
-            {multidisplay.map((item) => {
+            {multidisplay?.map((item) => {
                 return (
                     <div
                         className={styles.MultiDisplay}
@@ -110,7 +110,7 @@ function Bigimg() {
             </button>
 
             <ul className={styles.pagination}>
-                {liArray.map((item) => {
+                {liArray?.map((item) => {
                     return (
                         <li key={item}>
                             <button

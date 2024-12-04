@@ -23,18 +23,18 @@
     margin-right: 220px;
 }
 
-nav ul {
+.wrapper  ul {
     list-style: none;
     display: flex;
     gap: 50px;
     margin-top: 18px;
 }
 
-nav ul li {
+.wrapper  ul li {
     position: relative;
 }
 
-nav ul li a {
+.wrapper  ul li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -42,12 +42,12 @@ nav ul li a {
     transition: color 0.3s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
+.wrapper nav ul li a:hover,
+.wrapper nav ul li a.active {
     color: orange;
 }
 
-nav ul li a.active::after {
+.wrapper nav ul li a.active::after {
     content: '';
     display: block;
     width: 100%;
