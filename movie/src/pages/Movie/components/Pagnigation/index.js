@@ -73,11 +73,17 @@ function PaginatedItems( { itemsPerPage, data} ) {
     // Simulate fetching items from another resources.
     // (This could be items from props; or items loaded in a local state
     // from an API endpoint with useEffect and useState)
+    
+    // console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    
+        
+    
     const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     const currentItems = data.slice(itemOffset, endOffset);
-
     const pageCount = Math.ceil(data.length / itemsPerPage);
+    
+
+    
 
     // Invoke when user click to request another page.
     const handlePageClick = (event) => {

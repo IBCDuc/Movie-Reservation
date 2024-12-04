@@ -7,10 +7,12 @@ import LastestNews from './components/LastestNews';
 import layoutmodule from './Movie.module.scss'
 import { useEffect } from 'react';
 import useFetchMovies from '~/api/useFetchMovies';
+import { callAllMovie } from '~/services/api';
 import Loading from '~/components/Layout/components/Loading/loading';
 import { ThemeContext } from '~/ShowtimeSContext';
 import { useContext } from 'react';
 function Home() {
+
     const { data: data, loading, error } = useFetchMovies()
     const { showtimeSelection, setShowtimeSelection } = useContext(ThemeContext);
     console.log(showtimeSelection)

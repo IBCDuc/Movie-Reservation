@@ -11,18 +11,20 @@ import { useNavigate } from 'react-router-dom';
 
 
 function Showtime() {
-    const [selectedTime, setSelectedTime] = useState("04:10");
-    const { showtimeSelection, setShowtimeSelection } = useContext(ThemeContext);
-    console.log(showtimeSelection)
+    
+    const {value, value2} = useContext(ThemeContext)
+    const [showtimeSelection, setShowtimeSelection] = value 
+    const [initReservationDate, setInitReservationDate] = value2
+    
     const [loading, setLoading] = useState(false);
     const [isReloading, setIsReloading] = useState(false);
     const navigate = useNavigate()
     
     
     useEffect(() => {
-        console.log(selectedTime)
+        
         setTimeout(() => {
-            if (selectedTime) {
+            if (initReservationDate) {
                 setLoading(true);
             }
         }, 500)
@@ -47,9 +49,9 @@ function Showtime() {
     }
     return (
         <div className={styles.Wrapper}>
-            <ShowtimeHeader selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
-            <TicketHeader selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
-            <SeatSelection selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
+            <ShowtimeHeader selectedTime={initReservationDate} setSelectedTime={setInitReservationDate} initValue={initReservationDate} />
+            <TicketHeader selectedTime={initReservationDate} setSelectedTime={setInitReservationDate} initValue={initReservationDate} />
+            <SeatSelection selectedTime={initReservationDate} setSelectedTime={setInitReservationDate} initValue={initReservationDate} />
         </div>
     );
 }

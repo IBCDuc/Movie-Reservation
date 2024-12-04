@@ -61,7 +61,7 @@ export const showtimeApi = [
                         ],
                     },
                     {
-                        available: false,
+                        available: true,
                         time: '10:50', 
                         seats: [
                             {

@@ -15,9 +15,13 @@ const MovieCarousel = ( {data} ) => {
     };
 
     const getMoviesToDisplay = () => {
-        return data
+        if (data) {
+            return data
             .slice(currentIndex, currentIndex + moviesToShow)
             .concat(data.slice(0, Math.max(0, currentIndex + moviesToShow - data.length)));
+        }
+        return
+        
     }; 
 
     
