@@ -8,7 +8,9 @@ import { ThemeContext } from "~/ShowtimeSContext";
 const SeatSelection = ({ selectedTime, setSelectedTime }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [showtimeData, setShowtimeData] = useState(null);
-  const {showtimeSelection, setShowtimeSelection} = useContext(ThemeContext)
+  const {value, value2} = useContext(ThemeContext)
+  const [showtimeSelection, setShowtimeSelection] = value 
+  const [initReservationDate, setInitReservationDate] = value2
   const [price, setPrice] = useState(0)
   useEffect(() => {
     window.scrollTo(0, 0); 

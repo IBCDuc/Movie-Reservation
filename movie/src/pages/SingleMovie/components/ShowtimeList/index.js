@@ -1,11 +1,12 @@
 import React from 'react';
 import sty from './TicketSchedule.module.scss'; // Import CSS cho styling
 import { showtimeApi } from '~/pages/Showtime/Api/api';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { ThemeContext } from '~/ShowtimeSContext';
-const TicketSchedule = () => {
-
+const TicketSchedule = ( {id} ) => {
+  const navigate = useNavigate()
+  
   //wait for restructure!!!
     /* const schedules = [
     {
@@ -21,14 +22,16 @@ const TicketSchedule = () => {
       times: ["08h00", "12h30", "14h30", "17h50", "22h10"],
     },
   ]; */
-    const {showtimeSelection, setShowtimeSelection} = useContext(ThemeContext)
-    
+    const {value, value2} = useContext(ThemeContext)
+    const [showtimeSelection, setShowtimeSelection] = value 
+    const [initReservationDate, setInitReservationDate] = value2
     const handleBuyButton = (schedule) => {
-      
-      return setShowtimeSelection(schedule)
+      setInitReservationDate(schedule.times[0].time)
+      setShowtimeSelection(schedule)
+      navigate(`/show-time`)
     }
     
-    const schedulesTest = showtimeApi[0].showTimes;
+    const schedulesTest = showtimeApi[id - 1].showTimes;
     
     
     
@@ -44,11 +47,10 @@ const TicketSchedule = () => {
                             </li>
                         ))}
                     </div>
-                    <Link to="/show-time">
-                        <button className={sty.buyButton} onClick={() => handleBuyButton(schedule)}>
+                      <button className={sty.buyButton} onClick={() => handleBuyButton(schedule)}>
                             BUY TICKET
-                        </button>
-                    </Link>
+                      </button>
+                    
                 </div>
             ))}
         </div>

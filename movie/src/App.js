@@ -43,7 +43,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    element: <DefaultLayoutsAdmin />,
+    element: <DashboardLayoutBasic />,
     children: [
       {
         index: true,
