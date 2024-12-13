@@ -1,0 +1,19 @@
+
+.table-user{
+    gap: 20px;
+    padding: 25px;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+
+    .header-table{
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-right: 25px;
+        .btn-table{
+            display: flex;
+            gap: 15px;
+        }
+    }
+    
+}

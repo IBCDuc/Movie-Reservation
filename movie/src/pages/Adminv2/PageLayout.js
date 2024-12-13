@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import {
     AppstoreOutlined,
     ExceptionOutlined,
+    DatabaseOutlined,
     HeartTwoTone,
+    FileDoneOutlined,
     TeamOutlined,
     UserOutlined,
     DollarCircleOutlined,
@@ -42,32 +44,27 @@ const items = [
                 key: 'staff',
                 icon: <TeamOutlined />,
             },
-            {
-                label: <Link to='/admin/supplier'>Supplier</Link>,
-                key: 'supplier',
-                icon: <TeamOutlined />,
-            },
         ]
     },
     {
-        label: <Link to='/admin/stock'>Stock</Link>,
-        key: 'stock',
+        label: <Link to='/admin/movies'>Movies</Link>,
+        key: 'movie',
+        icon: <DatabaseOutlined />
+    },
+    {
+        label: <Link to='/admin/date'>ShowtimeDate</Link>,
+        key: 'date',
         icon: <ExceptionOutlined />
     },
     {
-        label: <Link to='/admin/room'>Manage Products</Link>,
-        key: 'room',
+        label: <Link to='/admin/hour'>ShowtimeHours</Link>,
+        key: 'hour',
         icon: <ExceptionOutlined />
     },
     {
-        label: <Link to='/admin/receipt'>Receipt Products</Link>,
-        key: 'receipt',
-        icon: <ExceptionOutlined />
-    },
-    {
-        label: <Link to='/admin/order'>Manage Orders</Link>,
-        key: 'order',
-        icon: <DollarCircleOutlined />
+        label: <Link to='/admin/stock'>Reports</Link>,
+        key: 'Reports',
+        icon: <FileDoneOutlined />
     },
 
 ];
