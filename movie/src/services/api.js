@@ -1,13 +1,44 @@
 // điều phối api
+//movies
+import axios from "../utils/axios-customize"
 
 //movies
-export const callAllMovie = async () => {
-    const response = await fetch("http://localhost:8000/api/movies")
-    return await response.json()
+export const callAllMovies = () => {
+    return axios.get("/api/movies")
+}
+
+export const callMovieById = (id) => {
+    return axios.get(`/api/single-movie/${id}`)
+}
+
+export const callGetMovieSearch = (queryRT) => {
+    return axios.get(`/api/movies/admin${queryRT}`)
+}
+
+//customer
+export const callGetAllCustomer = () => {
+    return axios.get(`/api/get-user`)
+}
+
+export const callDeleteCustomer = (id) => {
+    return axios.delete(`admin/delete-user`, {params: id})
 }
 
 
-export const callMovieById = async ( id ) => {
-    const response = await fetch(`http://localhost:8000/api/single-movie/${id}`)
-    return await response.json()
+//Date 
+export const callGetShowTimeDate = () => {
+    return axios.get(`/api/show-time/date`)
+}
+
+export const callAddShowTimeDate = (movie_id, date, status) => {
+    const data = new FormData();
+    data.append("movie_id", movie_id);
+    data.append("date", date);
+    data.append("status", status);
+    return axios.post(`/api/show-time/add/date`, data )
+}
+
+//Hour
+export const callGetShowTimeHour = () => {
+    return axios.get(`/api/show-time/hour`)
 }
