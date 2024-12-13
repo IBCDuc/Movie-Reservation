@@ -157,7 +157,7 @@ function SingleMovie() {
                         </ul>
                     </div>
                     <div className={styles.schedual}>
-                        <TicketSchedule/>
+                        <TicketSchedule id={data.movie_id} />
                     </div>
                     
                 </div>

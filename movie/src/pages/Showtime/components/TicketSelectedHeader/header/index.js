@@ -2,18 +2,20 @@ import sty from './showtimeheader.module.scss'
 import { useContext, useState, useLayoutEffect} from 'react';
 import { showtimeApi } from '~/pages/Showtime/Api/api';
 import { ThemeContext } from '~/ShowtimeSContext';
-function ShowtimeHeader( {selectedTime, setSelectedTime} ) {
+function  ShowtimeHeader( {selectedTime, setSelectedTime} ) {
     
-    const {showtimeSelection, setShowtimeSelection} = useContext(ThemeContext)
+    const {value, value2} = useContext(ThemeContext)
+    const [showtimeSelection, setShowtimeSelection] = value 
+    const [initReservationDate, setInitReservationDate] = value2
     
     const dateList = showtimeApi[0].showTimes.find((item) => {
         return item.date === showtimeSelection.date
     })
     
-    const handletimeList = () => {
-        setSelectedTime(dateList.times[0].time)
-    }
-    handletimeList()
+    // const handletimeList = () => {
+    //     setSelectedTime(dateList.times[0].time)
+    // }
+    // handletimeList()
 
     const timeList = dateList.times.find((item) => {
         

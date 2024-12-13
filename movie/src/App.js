@@ -18,6 +18,11 @@ import Showtime from './pages/Showtime';
 import Admin from './pages/Admin';
 import MovieAdd from './pages/Admin/components/MovieAdd';
 import DashboardLayoutBasic from './pages/Admin/components/Sidebar';
+import LayoutAdmin from './pages/Adminv2/PageLayout';
+import TableCustomer from './pages/Adminv2/Customer/TableCustomer';
+import TableMovie from './pages/Adminv2/Movies/TableMovie';
+import TableShowtimeDate from './pages/Adminv2/ShowtimeDate/TableDate';
+import TableHour from './pages/Adminv2/ShowtimeHour/TableHour';
 
 const Layout = ({ children }) => (
   <div>
@@ -26,43 +31,67 @@ const Layout = ({ children }) => (
 );
 
 const router = createBrowserRouter([
+
   {
     path: '/',
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
+
       {
         path: 'movie',
         element: <Movie />,
       },
+
       {
         path: 'single-movie/:id',
         element: <SingleMovie />,
       },
+
     ],
   },
+
   {
     path: '/admin',
-    element: <DefaultLayoutsAdmin />,
+    element: <LayoutAdmin />,
     children: [
+      
       {
         index: true,
-        element: <DashboardLayoutBasic />,
-      },
-      {
-        path: 'movies',
         element: <MovieAdd />,
       },
+
+      {
+        path: 'movies',
+        element: <TableMovie />,
+      },
+
+      {
+        path: 'customer',
+        element: <TableCustomer />,
+      },
+      {
+        path: 'date',
+        element: <TableShowtimeDate />
+      },
+      {
+        path: 'hour',
+        element: <TableHour />
+      },
+
     ],
   },
+
   {
     path: '/show-time',
     element: <DefaultLayoutShowtime />,
     children: [
+
       {
         index: true,
         element: <Showtime />,
       },
+
     ],
   },
 ]);

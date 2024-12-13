@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@toolpad/core": "^0.8.1",
     "antd": "^5.22.2",
+    "axios": "^1.7.9",
     "cors": "^2.8.5",
     "formik": "^2.4.6",
     "normalize.css": "^8.0.1",

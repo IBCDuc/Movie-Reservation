@@ -5,8 +5,11 @@ import { ThemeContext } from '~/ShowtimeSContext';
 const TicketHeader = ({ selectedTime, setSelectedTime }) => {
   
   const [ticketCount, setTicketCount] = useState(3);
-  const { showtimeSelection, setShowtimeSelection } = useContext(ThemeContext);
+  const {value, value2} = useContext(ThemeContext)
+  const [showtimeSelection, setShowtimeSelection] = value 
+  const [initReservationDate, setInitReservationDate] = value2
   console.log(showtimeSelection)
+
   // cần loại bỏ
   const times = [
     { time: '04:10', available: true, highlight: true },
@@ -17,6 +20,7 @@ const TicketHeader = ({ selectedTime, setSelectedTime }) => {
 
   
   const handleTimeSelect = (time) => {
+    
     if (time.available) setSelectedTime(time.time);
   };
   
@@ -35,7 +39,7 @@ const TicketHeader = ({ selectedTime, setSelectedTime }) => {
           <button
             key={index}
             className={`${sty.showTimeButton} ${time.available ? '' : sty.unavailable} ${time.time === selectedTime ? sty.selected : ''}`}
-            onClick={() => handleTimeSelect(time)}
+            onClick={ () => handleTimeSelect(time) }
             disabled={!time.available}
           >
             {time.time} PM
