@@ -75,10 +75,7 @@ const TableHour = () => {
       title: "Showtime Hours",
       dataIndex: "Movie_hour", // Tên thuộc tính chứa URL của hình ảnh
       key: "Movie_hour",
-      render: (text) => {
-        const date =  new Date(text)
-        return date.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }); 
-      }
+      
     },
     {
       title: "Showtime Date",
