@@ -42,3 +42,10 @@ export const callAddShowTimeDate = (movie_id, date, status) => {
 export const callGetShowTimeHour = () => {
     return axios.get(`/api/show-time/hour`)
 }
+
+export const callAddShowTimeHour = (showtime_date_id, hour) => {
+    const data = new FormData()
+    data.append("showtime_date_id", showtime_date_id)
+    data.append('hour', hour)
+    return axios.post('/api/show-time/add/hour', data)
+}

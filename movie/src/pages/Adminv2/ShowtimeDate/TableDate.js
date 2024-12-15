@@ -95,7 +95,7 @@ const TableShowtimeDate = () => {
     // },
     {
       title: "Status",
-      dataIndex: "genre",
+      dataIndex: "status",
     },
     // {
     //   title: "Category",
@@ -335,6 +335,7 @@ const handleDelete = async() => {
         open = {openCreateTour}
         setOpen = {setOpenCreateTour}
         fetchGetRoomTour = {fetchGetRoomTour}
+        setTypeRT = {setTypeRT}
       /> }
 
       {/* <ModalUpdateRoom

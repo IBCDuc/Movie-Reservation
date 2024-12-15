@@ -14,10 +14,10 @@ import {
   import { PlusOutlined } from "@ant-design/icons";
   import { useSelector, useDispatch } from "react-redux";
   import { getMovies } from "~/redux/movieAD/movieSlice";
-  import { callAddShowTimeDate, callGetMovieSearch } from "../../../services/api"; // Thêm gọi API tạo ngày chiếu
+  import { callAddShowTimeDate, callAddShowTimeHour, callGetMovieSearch } from "../../../services/api"; // Thêm gọi API tạo ngày chiếu
   
   const ModalCreateShowtime = (props) => {
-    const { open, setOpen, fetchGetRoomTour } = props;
+    const { open, setOpen, fetchGetRoomTour, setTypeRT } = props;
     const [isSubmit, setIsSubmit] = useState(false);
     const [form] = Form.useForm();
   
@@ -49,8 +49,8 @@ import {
   
     // Tùy chọn cho trạng thái showtime (công khai hoặc không công khai)
     let statusOptions = [
-      { value: "Public", label: "Công khai" },
-      { value: "UnPublic", label: "Không công khai" },
+      { value: "Public", label: "Public" },
+      { value: "UnPublic", label: "UnPublic" },
     ];
   
     // Hàm khi chọn phim (lưu tạm dữ liệu)
@@ -82,8 +82,9 @@ import {
     //   console.log(status)
       setIsSubmit(true);
       const res = await callAddShowTimeDate(movie_id, show_date, status);
+      const res2 = await callAddShowTimeHour(res, show_time)
       console.log(res.status)
-      if (res) {
+      if (res.data & res2.data) {
         message.success("Tạo ngày chiếu mới thành công");
         form.resetFields();
         setOpen(false);
@@ -96,30 +97,32 @@ import {
         });
         setIsSubmit(false);
       }
-    };
+    }
+
+
   
     return (
       <Modal
         title="Tạo mới ngày chiếu"
         open={open}
-        onOk={() => form.submit()}
+        visible={open}
         onCancel={() => {
           setOpen(false);
           form.resetFields();
         }}
+        onOk={() => form.submit()}
         okText="Tạo mới"
         cancelText="Hủy"
         confirmLoading={isSubmit}
         width={"50vw"}
         maskClosable={false}
       >
-        <Divider />
+       
         <Form
           form={form}
           name="create-showtime"
           onFinish={onFinish}
           autoComplete="off"
-          initialValues={tempData}  // Set giá trị ban đầu từ tempData
         >
           <Row gutter={15}>
             {/* Phim */}
@@ -133,7 +136,6 @@ import {
                 <Select
                   placeholder="Chọn một phim"
                   optionFilterProp="children"
-                  
                   options={movieOptions}
                   onChange={handleMovieChange}  
                 />
@@ -181,11 +183,59 @@ import {
                 />
               </Form.Item>
             </Col>
+
+            <Col span={12}>
+              <Form.Item
+                label="Chọn phòng chiếu"
+                name="theater_room"
+                labelCol={{ span: 24 }}
+                rules={[{ required: true, message: "Vui lòng chọn phòng chiếu!"  }]}
+              >
+                <Select
+                  placeholder="Chọn phòng chiếu"
+                  options={statusOptions}
+                />
+              </Form.Item>
+            </Col>
+
+            <Col span={12}>
+            <Form.Item label="Dịch vụ kèm theo" name="services" labelCol={{ span: 24 }}>
+              <Select
+                mode="multiple"
+                placeholder="Chọn dịch vụ"
+                options={statusOptions}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={12}>
+            <Form.Item
+              label="Mức giá vé"
+              name="ticket_price"
+              labelCol={{ span: 24 }}
+              rules={[{ required: true, message: "Vui lòng chọn mức giá vé!" }]}
+            >
+              <Select
+                placeholder="Chọn mức giá vé"
+                options={statusOptions}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col span={12}>
+            <Form.Item
+              label="Mô tả"
+              name="description"
+              labelCol={{ span: 24 }}
+            >
+              <Input.TextArea rows={4} placeholder="Nhập mô tả về buổi chiếu" />
+            </Form.Item>
+          </Col>
+
           </Row>
         </Form>
       </Modal>
     );
-  };
-  
-  export default ModalCreateShowtime;
+}
+export default ModalCreateShowtime;
   
