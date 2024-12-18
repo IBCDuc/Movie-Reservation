@@ -4,6 +4,7 @@ import {
     Input,
     Col,
     Row,
+    InputNumber,
     Divider,
     Select,
     message,
@@ -75,16 +76,17 @@ import {
   
     // Hàm khi submit form
     const onFinish = async (value) => {
-      const { movie_id, show_date, show_time, status } = value;
+    const { movie_id, show_date, show_time, status } = value;
     //   console.log(movie_id)
     //   console.log(show_date)
     //   console.log(show_time)
     //   console.log(status)
       setIsSubmit(true);
       const res = await callAddShowTimeDate(movie_id, show_date, status);
-      const res2 = await callAddShowTimeHour(res, show_time)
-      console.log(res.status)
-      if (res.data & res2.data) {
+      const res2 = await callAddShowTimeHour(res.data.Showtime_date_id, show_time)
+      console.log(res)
+      console.log(res2)
+      if (res.data && res2.data) {
         message.success("Tạo ngày chiếu mới thành công");
         form.resetFields();
         setOpen(false);
@@ -165,7 +167,16 @@ import {
                 <Input type="time" onChange={(e) => handleTimeChange(e.target.value)} />  
               </Form.Item>
             </Col>
-  
+            <Col span={12} style={{ padding: "0 10px" }}>
+              <Form.Item
+                label="Số lượng ghế thường"
+                name="seats_count_normal"
+                labelCol={{ span: 24 }}
+                rules={[{ required: true, message: "Vui lòng nhập số lượng ghế!" }]}
+              >
+                <InputNumber min={1} max={50} defaultValue={1} />
+              </Form.Item>
+            </Col>
             {/* Trạng thái */}
             <Col span={12} style={{ padding: "0 10px" }}>
               <Form.Item
@@ -181,6 +192,16 @@ import {
                   options={statusOptions}
                   onChange={handleStatusChange}  
                 />
+              </Form.Item>
+            </Col>
+            <Col span={12} style={{ padding: "0 10px" }}>
+              <Form.Item
+                label="Số lượng ghế vip"
+                name="seats_count_vip"
+                labelCol={{ span: 24 }}
+                rules={[{ required: true, message: "Vui lòng nhập số lượng ghế!" }]}
+              >
+                <InputNumber min={1} max={50} defaultValue={1} />
               </Form.Item>
             </Col>
 

@@ -24,6 +24,23 @@ export const callDeleteCustomer = (id) => {
     return axios.delete(`admin/delete-user`, {params: id})
 }
 
+//cinema
+export const callGetCinema = () => {
+    return axios.get(`/api/cinema`)
+}
+
+//seat
+export const callGetSeat = () => {
+    return axios.get(`/api/seat`)
+}
+export const callAddSeat = (row, number, type, CinemaId) => {
+    const data = new FormData();
+    data.append("row", row);
+    data.append("numbers", number);
+    data.append("type", type);
+    data.append("cinemaId", CinemaId)
+    return axios.post(`/api/seat/save`, data)
+}
 
 //Date 
 export const callGetShowTimeDate = () => {

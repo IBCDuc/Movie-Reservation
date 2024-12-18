@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { callGetShowTimeDate, callGetShowTimeHour } from "~/services/api";
 import InputSearchRT from "./InputSearchRT";
 import ModalCreateSlot from './ModalCreateSlot'
+import SeatReview from './SeatReview'
 // import ModalCreateRoom from "./ModalCreateRoom";
 // import ModalCreateTour from "./ModalCreateTour";
 // import ModalUpdateRoom from "./ModalUpdateRoom";
@@ -41,7 +42,8 @@ const TableHour = () => {
     const [openUpdateTour, setOpenUpdateTour] = useState(false)
     const [dataUpdateTour, setDataUpdateTour] = useState({})
     
-    
+    const [openReviewSeat, setOpenReviewSeat] = useState(false)
+
     const [openDeleteModal, setOpenDeleteModal] = useState(false)
 
     const [openViewModal, setOpenViewModal] = useState(false);
@@ -265,6 +267,14 @@ const handleDelete = async() => {
             }}
             >New </Button>
             }
+            {
+              <Button
+              type="primary"
+              onClick={() => {
+              setOpenReviewSeat(true)
+                        }}
+              >Review Seat </Button>  
+            }
         </div>
         <div
           style={{
@@ -349,6 +359,13 @@ const handleDelete = async() => {
         fetchGetRoomTour = {fetchGetRoomTour}
         setTypeRT = {setTypeRT}
       /> }
+
+      {
+        <SeatReview 
+        open = {openReviewSeat}
+        setOpen = {setOpenReviewSeat}
+        />
+      }
 
       {/* <ModalUpdateRoom
         dataUpdateRoom = {dataUpdateRoom} 

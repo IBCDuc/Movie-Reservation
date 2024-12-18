@@ -23,7 +23,8 @@ import TableCustomer from './pages/Adminv2/Customer/TableCustomer';
 import TableMovie from './pages/Adminv2/Movies/TableMovie';
 import TableShowtimeDate from './pages/Adminv2/ShowtimeDate/TableDate';
 import TableHour from './pages/Adminv2/ShowtimeHour/TableHour';
-
+import TableCinemal from './pages/Adminv2/Cinema/TableDate'
+import TableSeat from './pages/Adminv2/Seat/TableMovie'
 const Layout = ({ children }) => (
   <div>
     <DefaultLayout />
@@ -64,6 +65,15 @@ const router = createBrowserRouter([
       {
         path: 'movies',
         element: <TableMovie />,
+      },
+
+      {
+        path: 'cinema',
+        element: <TableCinemal />,
+      },
+      {
+        path: 'seat',
+        element: <TableSeat />,
       },
 
       {
