@@ -5,8 +5,9 @@ const initialState = {
     isLoading: true,
     user: {
         id: "",
-        name: "",
+        user_name: "",
         email: "",
+        avatar: "",
         role:0,
         status: 0,
         baseRole: "",
@@ -37,7 +38,6 @@ export const accountSlice = createSlice({
             state.isAuthenticated = true;
             state.isLoading = false;
             
-
             state.user = action.payload;
             state.role = action.payload.role
 
@@ -49,7 +49,7 @@ export const accountSlice = createSlice({
             state.isLoading = false;
 
             state.user = action.payload;
-           
+            state.role = action.payload.role
 
         },
 
@@ -60,37 +60,38 @@ export const accountSlice = createSlice({
             state.isLoading = false;
 
             state.admin = action.payload;
-            state.role = action.payload.baseRole
+            state.role = action.payload.role
 
         },
         
        
 
-        // doLogoutAction: (state, action) => {
-        //     localStorage.removeItem('access_token');
-        //     localStorage.removeItem('persist:root');
-        //     state.isAuthenticated = false;
-        //     state.user = {
-        //         id: "",
-        //         display_name: "",
-        //         email: "",
-        //         phone_number: "",
-        //         avatar: "",
-        //         role_id:0,
-        //         status: 0,
-        //         verify: 0,
-        //     },
+        doLogoutAction: (state, action) => {
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('token');
+            localStorage.removeItem('persist:root');
+            state.isAuthenticated = false;
+            state.user = {
+                id: "",
+                user_name: "",
+                email: "",
+                phone_number: "",
+                avatar: "",
+                role: "",
+                status: 0,
+                verify: 0
+            };  // Remove comma
 
-        //     state.admin = {
-        //         id: "",
-        //         display_name: "",
-        //         avatar: "",
-        //         role: "",
-        //         token: ""
-        //     },
+            state.admin = {
+                id: "",
+                display_name: "",
+                avatar: "",
+                role: "",
+                token: ""
+            };  // Remove comma
 
-        //     state.role = ""
-        // },
+            state.role = "";
+        }
 
     },
     

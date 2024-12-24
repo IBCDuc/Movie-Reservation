@@ -3,6 +3,9 @@ import counterReducer from '../redux/counter/counterSlice';
 import accountReducer from '../redux/account/accountSlice';
 import categoryReducer from '../redux/categoryAD/categorySlice';
 import movieReducer from '../redux/movieAD/movieSlice'
+import showtimeReducer from '../redux/showtimeAD/showtimeSlice'
+import seatReducer from '../redux/seatAD/seatSlice'
+
 import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import { combineReducers } from "redux";
@@ -18,7 +21,9 @@ const reducers = combineReducers({
   counter: counterReducer,
   account: accountReducer,
   cate: categoryReducer,
-  movie: movieReducer    
+  movie: movieReducer,
+  showtime: showtimeReducer,
+  seat : seatReducer
  });
 
 
