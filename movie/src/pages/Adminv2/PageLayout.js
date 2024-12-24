@@ -71,9 +71,15 @@ const items = [
         key: 'hour',
         icon: <ExceptionOutlined />
     },
+
+    {
+        label: <Link to='/admin/reservation'>Reservation</Link>,
+        key: 'reservation',
+        icon: <ExceptionOutlined />
+    },
     
     {
-        label: <Link to='/admin/stock'>Reports</Link>,
+        label: <Link to='/admin/report'>Reports</Link>,
         key: 'Reports',
         icon: <FileDoneOutlined />
     },
