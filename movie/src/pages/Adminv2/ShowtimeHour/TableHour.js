@@ -267,14 +267,7 @@ const handleDelete = async() => {
             }}
             >New </Button>
             }
-            {
-              <Button
-              type="primary"
-              onClick={() => {
-              setOpenReviewSeat(true)
-                        }}
-              >Review Seat </Button>  
-            }
+
         </div>
         <div
           style={{
@@ -360,12 +353,7 @@ const handleDelete = async() => {
         setTypeRT = {setTypeRT}
       /> }
 
-      {
-        <SeatReview 
-        open = {openReviewSeat}
-        setOpen = {setOpenReviewSeat}
-        />
-      }
+ 
 
       {/* <ModalUpdateRoom
         dataUpdateRoom = {dataUpdateRoom} 

@@ -96,33 +96,23 @@ const TableMovie = () => {
       dataIndex: "type",
       key: "type",
     },
-    // {
-    //   title: "Price per ticket",
-    //   dataIndex: "price",
-    // },
-    // {
-    //   title: "Create At",
-    //   dataIndex: "create_at",
-    //   key: "create_at",
-    //   render: (text) => {
-    //     const date = new Date(text);
-    //     return date.toLocaleDateString('vi-VN'); 
-    //   }
-    // },
-    // {
-    //   title: "Category",
-    //   dataIndex: "category",
-    //    render: (text, record, index) => {
-    //      return (
-    //          <span>{record?.categories.name}</span>
-    //      );
-    //    },
-    // },
+    
+    {
+      title: "Cinema Name",
+      dataIndex: "cinemaRoom", // Đảm bảo bạn đang sử dụng đúng key của object
+      render: (cinemaRoom, record) => {
+        return <span>{cinemaRoom ? cinemaRoom.name : 'N/A'}</span>;
+      }
+    },
+
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
+      render: (status) => (status ? "Not Available" : "Available"),
     },
+    
+
     {
       title: "Action",
       key: "action",
@@ -225,7 +215,6 @@ const TableMovie = () => {
       setListRoomTour(res.data);
       setTotal(res.total)
       SetDataCate(res2.data)
-     
      // console.log("resAll",res);
     }
 

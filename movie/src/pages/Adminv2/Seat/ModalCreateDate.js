@@ -138,7 +138,7 @@ const AddSeatsForm = ({ open, setOpen, dataView2, fetchGetRoomTour }) => {
                         label="Numbers"
                         rules={[{ required: true, message: 'Please enter number' }]}
                       >
-                        <InputNumber min={0} placeholder="10" />
+                        <InputNumber min={0} placeholder="13" />
                       </Form.Item>
 
                       <Form.Item

@@ -15,13 +15,15 @@ import {
   import { PlusOutlined } from "@ant-design/icons";
   import { useSelector, useDispatch } from "react-redux";
   import { getMovies } from "~/redux/movieAD/movieSlice";
-  import { callAddShowTimeDate, callAddShowTimeHour, callGetMovieSearch } from "../../../services/api"; // Thêm gọi API tạo ngày chiếu
+  import { callAddShowTimeDate, callAddShowTimeHour, callGetCinema, callGetMovieSearch, changeSeatBasedOnShowtime } from "../../../services/api"; // Thêm gọi API tạo ngày chiếu
   
   const ModalCreateShowtime = (props) => {
-    const { open, setOpen, fetchGetRoomTour, setTypeRT } = props;
+    const { open, setOpen, fetchGetRoomTour, setTypeRT, data } = props;
+    console.log(data)
     const [isSubmit, setIsSubmit] = useState(false);
     const [form] = Form.useForm();
-  
+    const [loading, setIsLoading] = useState({})
+    
     const dispatch = useDispatch();
     const movies = useSelector((state) => state.movie.movies); // Giả sử movies có sẵn trong Redux store
   
@@ -32,11 +34,14 @@ import {
       status: null,
     });
 
-
-  
     useEffect(() => {
       dispatch(getMovies()); // Gọi action để lấy danh sách phim từ API
     }, [dispatch]);
+
+
+  
+
+    
   
     // Tạo tùy chọn cho danh sách phim
     let movieOptions = movies?.map((item) => {
@@ -46,8 +51,13 @@ import {
       };
     });
     
-
-  
+    let cinemaOptions = data?.map((item) => {
+      return {
+        value: item.cinemaId,
+        label: item.cinemaName,
+      };
+    })
+    
     // Tùy chọn cho trạng thái showtime (công khai hoặc không công khai)
     let statusOptions = [
       { value: "Public", label: "Public" },
@@ -76,16 +86,20 @@ import {
   
     // Hàm khi submit form
     const onFinish = async (value) => {
-    const { movie_id, show_date, show_time, status } = value;
+    const { movie_id, show_date, show_time, status, theater_room } = value;
     //   console.log(movie_id)
     //   console.log(show_date)
     //   console.log(show_time)
     //   console.log(status)
       setIsSubmit(true);
       const res = await callAddShowTimeDate(movie_id, show_date, status);
-      const res2 = await callAddShowTimeHour(res.data.Showtime_date_id, show_time)
+      const res2 = await callAddShowTimeHour(res.data.Showtime_date_id, show_time, theater_room)
+      // const res3 = await changeSeatBasedOnShowtime(res2.data, theater_room )
       console.log(res)
+      console.log("res2>>> ")
       console.log(res2)
+      
+      
       if (res.data && res2.data) {
         message.success("Tạo ngày chiếu mới thành công");
         form.resetFields();
@@ -167,16 +181,6 @@ import {
                 <Input type="time" onChange={(e) => handleTimeChange(e.target.value)} />  
               </Form.Item>
             </Col>
-            <Col span={12} style={{ padding: "0 10px" }}>
-              <Form.Item
-                label="Số lượng ghế thường"
-                name="seats_count_normal"
-                labelCol={{ span: 24 }}
-                rules={[{ required: true, message: "Vui lòng nhập số lượng ghế!" }]}
-              >
-                <InputNumber min={1} max={50} defaultValue={1} />
-              </Form.Item>
-            </Col>
             {/* Trạng thái */}
             <Col span={12} style={{ padding: "0 10px" }}>
               <Form.Item
@@ -194,17 +198,6 @@ import {
                 />
               </Form.Item>
             </Col>
-            <Col span={12} style={{ padding: "0 10px" }}>
-              <Form.Item
-                label="Số lượng ghế vip"
-                name="seats_count_vip"
-                labelCol={{ span: 24 }}
-                rules={[{ required: true, message: "Vui lòng nhập số lượng ghế!" }]}
-              >
-                <InputNumber min={1} max={50} defaultValue={1} />
-              </Form.Item>
-            </Col>
-
             <Col span={12}>
               <Form.Item
                 label="Chọn phòng chiếu"
@@ -214,7 +207,7 @@ import {
               >
                 <Select
                   placeholder="Chọn phòng chiếu"
-                  options={statusOptions}
+                  options={cinemaOptions}
                 />
               </Form.Item>
             </Col>
@@ -229,19 +222,6 @@ import {
             </Form.Item>
           </Col>
 
-          <Col span={12}>
-            <Form.Item
-              label="Mức giá vé"
-              name="ticket_price"
-              labelCol={{ span: 24 }}
-              rules={[{ required: true, message: "Vui lòng chọn mức giá vé!" }]}
-            >
-              <Select
-                placeholder="Chọn mức giá vé"
-                options={statusOptions}
-              />
-            </Form.Item>
-          </Col>
 
           <Col span={12}>
             <Form.Item

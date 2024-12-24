@@ -1,0 +1,17 @@
+.report-container {
+    padding: 24px;
+    
+    .ant-card {
+        margin-bottom: 24px;
+    }
+
+    .ant-statistic-title {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.45);
+    }
+
+    .ant-statistic-content {
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
