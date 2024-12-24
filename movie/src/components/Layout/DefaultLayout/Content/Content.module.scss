@@ -1,14 +1,28 @@
 .headingWithSeparator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
+    text-align: center;
+    position: relative;
+    margin: 40px 0;
+    width: 100%;
 
-.headingWithSeparator h1 {
-    padding-top: 10px;
-    font-size: 35px;
-    font-weight: bold;
-    margin: 0 20px; /* Khoảng cách giữa text và separator */
-}
+    h1 {
+        font-size: 32px;
+        color: #333;
+        display: inline-block;
+        padding: 0 40px;
+        background: #f8e1e1;
+        position: relative;
+        z-index: 1;
+    }
 
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        height: 4px;
+        background: #ccc;
+        z-index: 0;
+        width: 100%;
+    }
+}

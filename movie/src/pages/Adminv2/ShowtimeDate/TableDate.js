@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-import { callGetShowTimeDate } from "~/services/api";
+import { callGetCinema, callGetShowTimeDate } from "~/services/api";
 import InputSearchRT from "./InputSearchRT";
 import ModalCreateDate from "./ModalCreateDate"
 // import ModalCreateTour from "./ModalCreateTour";
@@ -31,6 +31,7 @@ const TableShowtimeDate = () => {
     const [querySearch, setQuerySearch  ] = useState("")
     const [listRoomTour, setListRoomTour] = useState([])
 
+    const [data, setData] = useState([])
     const [openCreateRoom, setOpenCreateRoom] = useState(false)
     const [openUpdateRoom, setOpenUpdateRoom] = useState(false)
     const [dataUpdateRoom, setDataUpdateRoom] = useState({})
@@ -207,8 +208,9 @@ const TableShowtimeDate = () => {
     }
 
     const res = await callGetShowTimeDate();
-    if (res && res?.data) {
-
+    const res2 = await callGetCinema()
+    if (res && res?.data && res2) {
+      setData(res2.data)
       setListRoomTour(res.data);
       setTotal(res.total)
      
@@ -336,6 +338,7 @@ const handleDelete = async() => {
         setOpen = {setOpenCreateTour}
         fetchGetRoomTour = {fetchGetRoomTour}
         setTypeRT = {setTypeRT}
+        data = {data}
       /> }
 
       {/* <ModalUpdateRoom

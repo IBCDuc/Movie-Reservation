@@ -7,27 +7,30 @@
 
 .scheduleItem {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px;
-}
-
-.times {
+    position: relative; /* Để có thể căn chỉnh các phần tử */
+  }
+  
+  .times {
     display: flex;
-    gap: 10px;
-}
-
-.timeButton {
+    gap: 12px;
+    position: absolute; /* Đặt .times ở giữa container giữa hai phần tử */
+    left: 50%; /* Đặt điểm bắt đầu của .times ở giữa */
+    transform: translateX(-50%); /* Đẩy .times về phía giữa */
+  }
+  
+  .timeButton {
     background-color: #eaaeae;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-}
-
-.buyButton {
+  }
+  
+  .buyButton {
     background-color: orange;
     border: none;
     padding: 8px 9px;
@@ -35,7 +38,15 @@
     color: white;
     font-size: 12px;
     font-weight: 600;
-}
+    margin-left: auto; /* Đẩy nút Buy Ticket sang phải */
+    
+  }
+  .buyButton a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  
 
 .buyButton:hover {
     background-color: darkorange;

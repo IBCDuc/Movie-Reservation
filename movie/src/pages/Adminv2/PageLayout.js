@@ -52,6 +52,16 @@ const items = [
         icon: <DatabaseOutlined />
     },
     {
+        label: <Link to='/admin/cinema'>Cinema</Link>,
+        key: 'cinema',
+        icon: <ExceptionOutlined />
+    },
+    {
+        label: <Link to='/admin/seat'>Seat Slot</Link>,
+        key: 'seat',
+        icon: <ExceptionOutlined />
+    },
+    {
         label: <Link to='/admin/date'>ShowtimeDate</Link>,
         key: 'date',
         icon: <ExceptionOutlined />
@@ -61,8 +71,15 @@ const items = [
         key: 'hour',
         icon: <ExceptionOutlined />
     },
+
     {
-        label: <Link to='/admin/stock'>Reports</Link>,
+        label: <Link to='/admin/reservation'>Reservation</Link>,
+        key: 'reservation',
+        icon: <ExceptionOutlined />
+    },
+    
+    {
+        label: <Link to='/admin/report'>Reports</Link>,
         key: 'Reports',
         icon: <FileDoneOutlined />
     },

@@ -2,7 +2,7 @@ import { Modal, Form, Input, Select, InputNumber, Checkbox, Row, Col, DatePicker
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
 // import moment from "moment"; // Import moment.js để làm việc với ngày tháng
-
+import Seatmap from "react-seatmap";
 const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
   const [form] = Form.useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -165,6 +165,7 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
           </Col>
         </Row>
       </Form>
+
     </Modal>
   );
 };

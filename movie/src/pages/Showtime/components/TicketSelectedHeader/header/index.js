@@ -1,37 +1,37 @@
-import sty from './showtimeheader.module.scss'
-import { useContext, useState, useLayoutEffect} from 'react';
-import { showtimeApi } from '~/pages/Showtime/Api/api';
+import sty from './showtimeheader.module.scss';
+import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '~/ShowtimeSContext';
-function  ShowtimeHeader( {selectedTime, setSelectedTime} ) {
-    
-    const {value, value2} = useContext(ThemeContext)
-    const [showtimeSelection, setShowtimeSelection] = value 
-    const [initReservationDate, setInitReservationDate] = value2
-    
-    const dateList = showtimeApi[0].showTimes.find((item) => {
-        return item.date === showtimeSelection.date
-    })
-    
-    // const handletimeList = () => {
-    //     setSelectedTime(dateList.times[0].time)
-    // }
-    // handletimeList()
+import { useSelector } from 'react-redux';
 
-    const timeList = dateList.times.find((item) => {
-        
-        return item.time === selectedTime 
+function ShowtimeHeader({ showtimeData }) {
+    // Kiểm tra showtimeData trước khi truy cập
+    console.log(showtimeData);
+    const movieName = useSelector((state) => state.showtime.movieName);
+    if (!showtimeData || !showtimeData.date || !showtimeData.times) {
+        return <div>Loading or missing data...</div>;
+    }
 
-    })
+    // Kiểm tra thông tin showtime
+    const { cinemaName, available, time, seats } = showtimeData.times;
+    // Đảm bảo time được định dạng chính xác
     
+
     return (
         <header className={sty.movieInfo}>
-            <div className ={sty.leftback}>
-            <a ><i class="fa-solid fa-arrow-left fa-xl"></i></a>
+            <div className={sty.leftback}>
+                <a><i className="fa-solid fa-arrow-left fa-xl"></i></a>
             </div>
             <h3>
-                Jigra <span className={sty.rating}>UA</span>
+                {movieName} <span className={sty.rating}>UA</span>
             </h3>
-            <p>INOX: Metro Mall Junction, Kalyan (E) | {dateList.date}, {timeList.time}</p>
+            <p>
+                {showtimeData.times[0].cinemaName}: {new Date(showtimeData.date).toLocaleDateString('en-US', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                })}, {showtimeData.times[0].time}
+            </p>
         </header>
     );
 }

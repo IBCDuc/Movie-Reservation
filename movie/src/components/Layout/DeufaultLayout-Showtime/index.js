@@ -11,7 +11,6 @@ function DefaultLayoutShowtime() {
             <div className={layoutmodule.Content}>
                 <Showtime />
             </div>
-            <Footer />
         </div>
     );
 }

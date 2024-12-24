@@ -1,0 +1,118 @@
+
+.history-header {
+    height: 60px;
+    border-bottom: 1px solid #ebebeb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+.history-container{
+    margin: 0 auto;
+    max-width: 1170px;
+    padding: 15px;
+
+    .history-option{
+        // display: flex;
+        // justify-content: space-between;
+        
+        .title-history{
+            font-size: 21px;
+            font-weight: 600;
+            color: #3C3C3C;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .option-filter{
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: center;
+
+        }
+        .filter-right{
+            display: flex;
+            gap: 20px;
+            .filter-status-order{
+                display: flex;
+                gap: 20px;
+                align-items: center;
+            }
+        }
+    }
+
+    .list-order{
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+       .order-item{
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+            .header-item{
+                display: flex;
+                justify-content: space-between;
+                .info-code{
+                    display: flex;
+                    gap: 60px;
+                    .code-order{
+
+                    }
+                    .info-tag{
+                        
+                    }
+                }
+                .btn-handle{
+                    display: flex;
+                    gap: 20px;
+                }
+            }
+            .content-item{
+                display: flex;
+                cursor: pointer;
+                .media-content{
+                    width: 320px;
+                    height: 200px;
+                    img{
+                        border-radius: 8px;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                .tour-content{
+                    display: flex;
+                    flex-direction: column;
+                    padding-left: 50px;
+                    gap: 20px;
+                
+                    .title{
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #3C3C3C;
+
+                    }
+                    .date-start, .tour-price{
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: #3C3C3C;
+                    }
+                    .tour-price{
+                        color: #E54141;
+                    }
+                    
+                }
+            }
+       } 
+    }
+
+}
+
+
+//dropDown
+
+.anticon-down{
+    visibility: hidden;
+}

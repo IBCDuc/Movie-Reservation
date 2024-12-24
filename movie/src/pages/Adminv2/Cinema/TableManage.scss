@@ -1,0 +1,33 @@
+.container-table-cate{
+    padding: 10px 25px;
+    box-sizing: border-box;
+    margin-top: 20px;
+    .header-table{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        margin-bottom: 20px;
+        
+        .title-table{
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .btn-add-prod{
+            border: none;
+            padding: 10px 8px;
+            border-radius: 2px;
+            background-color: rgb(17, 182, 17);
+            color: #ffffff;
+            font-size: 15px;
+            cursor: pointer;
+    
+            &:hover{
+                background-color: rgb(7, 135, 7);
+            }
+        
+        }
+    }
+}
+
+

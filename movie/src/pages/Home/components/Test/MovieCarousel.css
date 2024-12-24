@@ -38,7 +38,8 @@
 }
 
 .prev-carousel-button {
-    background-color: #938b81;
+    background-color: transparent;
+    color: #fff;;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -51,7 +52,8 @@
 }
 
 .next-carousel-button {
-  background-color: #938b81;
+  background-color: transparent;
+  color: #fff;
   border: none;
   padding: 10px;
   cursor: pointer;

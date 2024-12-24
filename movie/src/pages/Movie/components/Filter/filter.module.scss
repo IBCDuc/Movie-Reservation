@@ -1,39 +1,56 @@
 .filterContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 300px;
-    margin-bottom: 15px;
-    position: absolute;
-    top: 325px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.filterHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  
+  i {
+      color: #f60;
   }
   
-  .filterLabel {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 5px;
+  span {
+      font-weight: 600;
+      color: #333;
   }
-  
-  .filterSelect {
-    padding: 8px;
-    font-size: 14px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-    cursor: pointer;
-    transition: border-color 0.3s;
-  
-    &:hover {
-      border-color: #007bff;
-    }
-  
-    &:focus {
-      border-color: #007bff;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.filterItem {
+  flex: 1;
+  min-width: 150px;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+      border-color: #f60;
+  }
+
+  &:focus {
       outline: none;
-    }
+      border-color: #f60;
+      box-shadow: 0 0 0 2px rgba(255,102,0,0.1);
   }
-  .select {
-    display: flex;
-    gap:20px;
-  }
-  
+}

@@ -1,113 +1,242 @@
-.slide a img {
-    width: 100vw; /* Chiều rộng 100% của viewport */
-    /* Chiều cao 100% của viewport */
-    object-fit: cover; /* Đảm bảo ảnh luôn bao phủ toàn bộ khung hình */
+// .slide a img {
+//     width: 100vw; /* Chiều rộng 100% của viewport */
+//     /* Chiều cao 100% của viewport */
+//     object-fit: cover; /* Đảm bảo ảnh luôn bao phủ toàn bộ khung hình */
+// }
+
+
+
+// .MultiDisplay {
+//     display: none;
+//     color: aliceblue;
+    
+// }
+
+// .MultiDisplay.active {
+//     transition: 0.5s;
+// }
+
+// .TextOnImg {
+//     position: absolute;
+//     top: 31%;
+//     left: 169px;
+    
+// }
+
+// .TextOnImg p {
+//     margin-bottom: 4px;
+// }
+
+// .TextOnImg h1 {
+//     font-size: 45px;
+//     font-weight: 700;
+//     color: #aa5555;
+//     transition: 0.5s;
+// }
+// .TextOnImg h1:hover {
+//     color: red;
+//     transition: 0.5s;
+// }
+
+// .pagination {
+//     display: flex;
+//     color: rgb(228, 228, 228);
+//     gap: 10px;
+//     position: absolute;
+//     top: 65%;
+//     left: 1%;
+//     list-style-type: none;
+// }
+
+// .pagination li button {
+//     background: #000;
+//     color: white;
+//     border-radius: 50%;
+//     width: 30px;
+//     height: 30px;
+//     font-size: 17px;
+//     border: #000;
+// }
+
+// .pagination li button:hover {
+//     background: #884c4c;
+// }
+
+// .slickPrev,
+// .slickNext {
+//     background-color: transparent; /* Màu nền */
+//     color: rgb(255, 255, 255); /* Màu chữ */
+//     border: none; /* Bỏ viền */
+//     padding: 10px 5px; /* Khoảng cách bên trong */
+//     cursor: pointer; /* Thay đổi con trỏ khi hover */
+//     position: absolute; /* Định vị */
+//     top: 41%; /* Vị trí giữa slider */
+//     z-index: 1; /* Đảm bảo nút nằm trên cùng */
+//     transform: translateY(-50%);
+//     font-size: 30px;
+//     font-weight: 800;
+// }
+
+// .slickPrev {
+//     left: 2px; /* Định vị nút trái */
+// }
+
+// .slickNext {
+//     right: 2px; /* Định vị nút phải */
+// }
+
+// .slickPrev:hover,
+// .slickNext:hover {
+//     color: #aa5555; /* Màu nền khi hover */
+// }
+// .OnImgDate {
+//     display: flex;
+//     gap: 15px;
+//     margin-top: 6px;
+//     margin-bottom: 22px;
+// }
+
+// .OnImgButton {
+//     display: flex;
+//     gap: 20px;
+// }
+
+// .OnImgButton a {
+//     text-decoration: none;
+//     color: white;
+// }
+
+// .OnImgButton a:hover {
+//     color: red;
+//     transition: 0.5s;
+//     text-decoration: none;
+// }
+
+//22-12-2024
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
 }
-
-
 
 .MultiDisplay {
-    display: none;
-    color: aliceblue;
-    
-}
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
 
-.MultiDisplay.active {
-    transition: 0.5s;
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
 }
 
 .TextOnImg {
     position: absolute;
-    top: 31%;
-    left: 169px;
-    
-}
-
-.TextOnImg p {
-    margin-bottom: 4px;
-}
-
-.TextOnImg h1 {
-    font-size: 45px;
-    font-weight: 700;
-    color: #aa5555;
-    transition: 0.5s;
-}
-.TextOnImg h1:hover {
-    color: red;
-    transition: 0.5s;
-}
-
-.pagination {
-    display: flex;
-    color: rgb(228, 228, 228);
-    gap: 10px;
-    position: absolute;
-    top: 65%;
-    left: 1%;
-    list-style-type: none;
-}
-
-.pagination li button {
-    background: #000;
+    top: 30%;
+    left: 10%;
+    z-index: 3;
     color: white;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 17px;
-    border: #000;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+
+    h1 {
+        font-size: 45px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #fff;
+        transition: 0.5s;
+        
+        &:hover {
+            color: #aa5555;
+        }
+    }
+
+    p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
 }
 
-.pagination li button:hover {
-    background: #884c4c;
-}
-
-.slickPrev,
-.slickNext {
-    background-color: transparent; /* Màu nền */
-    color: rgb(255, 255, 255); /* Màu chữ */
-    border: none; /* Bỏ viền */
-    padding: 10px 5px; /* Khoảng cách bên trong */
-    cursor: pointer; /* Thay đổi con trỏ khi hover */
-    position: absolute; /* Định vị */
-    top: 41%; /* Vị trí giữa slider */
-    z-index: 1; /* Đảm bảo nút nằm trên cùng */
-    transform: translateY(-50%);
-    font-size: 30px;
-    font-weight: 800;
-}
-
-.slickPrev {
-    left: 2px; /* Định vị nút trái */
-}
-
-.slickNext {
-    right: 2px; /* Định vị nút phải */
-}
-
-.slickPrev:hover,
-.slickNext:hover {
-    color: #aa5555; /* Màu nền khi hover */
-}
 .OnImgDate {
     display: flex;
     gap: 15px;
-    margin-top: 6px;
     margin-bottom: 22px;
+    
+    h3 {
+        color: #fff;
+    }
 }
 
 .OnImgButton {
     display: flex;
     gap: 20px;
+
+    a {
+        text-decoration: none;
+        color: white;
+        transition: 0.5s;
+
+        &:hover {
+            color: #aa5555;
+        }
+    }
 }
 
-.OnImgButton a {
-    text-decoration: none;
+.slide img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.slickPrev,
+.slickNext {
+    position: absolute;
+    top: 46%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: transparent;
     color: white;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    
+    &:hover {
+        background: rgba(0,0,0,0.8);
+    }
 }
 
-.OnImgButton a:hover {
-    color: red;
-    transition: 0.5s;
-    text-decoration: none;
+.slickPrev {
+    left: 20px;
+}
+
+.slickNext {
+    right: 20px;
+}
+
+.pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+
+    li button {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255,255,255,0.5);
+        cursor: pointer;
+        
+        &:hover {
+            background: #884c4c;
+        }
+    }
 }
