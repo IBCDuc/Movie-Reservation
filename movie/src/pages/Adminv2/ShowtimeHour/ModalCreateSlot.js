@@ -1,51 +1,52 @@
 import { Modal, Form, Input, Select, InputNumber, Checkbox, Row, Col, DatePicker, message, notification } from "antd";
 import { useState } from "react";
 import { PlusOutlined } from "@ant-design/icons";
-// import moment from "moment"; // Import moment.js để làm việc với ngày tháng
+// import moment from "moment"; // Import moment.js to work with dates
 import Seatmap from "react-seatmap";
+
 const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
   const [form] = Form.useForm();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const movieOptions = [
-    { value: "1", label: "Phim 1" },
-    { value: "2", label: "Phim 2" },
-    // Thêm phim thực tế ở đây từ API hoặc Redux store
+    { value: "1", label: "Movie 1" },
+    { value: "2", label: "Movie 2" },
+    // Add real movies here from an API or Redux store
   ];
 
   const theaterOptions = [
-    { value: "Room 1", label: "Phòng chiếu 1" },
-    { value: "Room 2", label: "Phòng chiếu 2" },
-    // Thêm phòng chiếu thực tế ở đây
+    { value: "Room 1", label: "Screening Room 1" },
+    { value: "Room 2", label: "Screening Room 2" },
+    // Add real screening rooms here
   ];
 
   const serviceOptions = [
-    { value: "vip_seat", label: "Ghế VIP" },
-    { value: "snacks", label: "Đồ ăn nhẹ" },
-    { value: "premium_sound", label: "Âm thanh cao cấp" },
+    { value: "vip_seat", label: "VIP Seat" },
+    { value: "snacks", label: "Snacks" },
+    { value: "premium_sound", label: "Premium Sound" },
   ];
 
   const ticketOptions = [
-    { value: "standard", label: "Vé thường - 100,000 VND" },
-    { value: "vip", label: "Vé VIP - 200,000 VND" },
+    { value: "standard", label: "Standard Ticket - 100,000 VND" },
+    { value: "vip", label: "VIP Ticket - 200,000 VND" },
   ];
 
   const onFinish = async (values) => {
     setIsSubmitting(true);
-    // Giả lập gọi API để thêm buổi chiếu mới
+    // Simulate API call to create a new showtime
     const res = await new Promise((resolve) => {
       setTimeout(() => resolve({ success: true }), 1000);
     });
 
     if (res.success) {
-      message.success("Tạo ngày chiếu mới thành công");
+      message.success("Successfully created a new showtime.");
       form.resetFields();
       setOpen(false);
-      await fetchGetShowtimes();  // Fetch lại danh sách showtimes
+      await fetchGetShowtimes();  // Fetch the updated list of showtimes
     } else {
       notification.error({
-        message: "Có lỗi xảy ra!",
-        description: "Không thể tạo mới ngày chiếu.",
+        message: "An error occurred!",
+        description: "Unable to create a new showtime.",
         duration: 3,
       });
     }
@@ -55,7 +56,7 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
 
   return (
     <Modal
-      title="Tạo mới ngày chiếu"
+      title="Create New Showtime"
       visible={open}
       onCancel={() => {
         setOpen(false);
@@ -63,8 +64,8 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
       }}
       onOk={() => form.submit()}
       confirmLoading={isSubmitting}
-      okText="Tạo mới"
-      cancelText="Hủy"
+      okText="Create"
+      cancelText="Cancel"
       width="60vw"
       maskClosable={false}
     >
@@ -72,13 +73,13 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
         <Row gutter={16}>
           <Col span={12}>
             <Form.Item
-              label="Chọn Phim"
+              label="Select Movie"
               name="movie_id"
-              rules={[{ required: true, message: "Vui lòng chọn phim!" }]}
+              rules={[{ required: true, message: "Please select a movie!" }]}
             >
               <Select
                 showSearch
-                placeholder="Chọn một phim"
+                placeholder="Select a movie"
                 options={movieOptions}
               />
             </Form.Item>
@@ -86,14 +87,14 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
 
           <Col span={12}>
             <Form.Item
-              label="Chọn ngày chiếu"
+              label="Select Date"
               name="show_date"
-              rules={[{ required: true, message: "Vui lòng chọn ngày chiếu!" }]}
+              rules={[{ required: true, message: "Please select a date!" }]}
             >
               <DatePicker
                 format="DD-MM-YYYY"
                 // disabledDate={(current) => current && current < moment().startOf("day")}
-                placeholder="Chọn ngày chiếu"
+                placeholder="Select a date"
                 style={{ width: "100%" }}
               />
             </Form.Item>
@@ -101,9 +102,9 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
 
           <Col span={12}>
             <Form.Item
-              label="Giờ chiếu"
+              label="Showtime"
               name="show_time"
-              rules={[{ required: true, message: "Vui lòng chọn giờ chiếu!" }]}
+              rules={[{ required: true, message: "Please select a time!" }]}
             >
               <Input type="time" />
             </Form.Item>
@@ -111,9 +112,9 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
 
           <Col span={12}>
             <Form.Item
-              label="Số lượng ghế"
+              label="Number of Seats"
               name="seats_count"
-              rules={[{ required: true, message: "Vui lòng nhập số lượng ghế!" }]}
+              rules={[{ required: true, message: "Please enter the number of seats!" }]}
             >
               <InputNumber min={1} max={1000} defaultValue={1} />
             </Form.Item>
@@ -121,22 +122,22 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
 
           <Col span={12}>
             <Form.Item
-              label="Chọn phòng chiếu"
+              label="Select Screening Room"
               name="theater_room"
-              rules={[{ required: true, message: "Vui lòng chọn phòng chiếu!" }]}
+              rules={[{ required: true, message: "Please select a screening room!" }]}
             >
               <Select
-                placeholder="Chọn phòng chiếu"
+                placeholder="Select a screening room"
                 options={theaterOptions}
               />
             </Form.Item>
           </Col>
 
           <Col span={12}>
-            <Form.Item label="Dịch vụ kèm theo" name="services">
+            <Form.Item label="Additional Services" name="services">
               <Select
                 mode="multiple"
-                placeholder="Chọn dịch vụ"
+                placeholder="Select services"
                 options={serviceOptions}
               />
             </Form.Item>
@@ -144,12 +145,12 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
 
           <Col span={12}>
             <Form.Item
-              label="Mức giá vé"
+              label="Ticket Price"
               name="ticket_price"
-              rules={[{ required: true, message: "Vui lòng chọn mức giá vé!" }]}
+              rules={[{ required: true, message: "Please select a ticket price!" }]}
             >
               <Select
-                placeholder="Chọn mức giá vé"
+                placeholder="Select ticket price"
                 options={ticketOptions}
               />
             </Form.Item>
@@ -157,10 +158,10 @@ const ModalCreateShowtime = ({ open, setOpen, fetchGetShowtimes }) => {
 
           <Col span={12}>
             <Form.Item
-              label="Mô tả"
+              label="Description"
               name="description"
             >
-              <Input.TextArea rows={4} placeholder="Nhập mô tả về buổi chiếu" />
+              <Input.TextArea rows={4} placeholder="Enter a description of the showtime" />
             </Form.Item>
           </Col>
         </Row>

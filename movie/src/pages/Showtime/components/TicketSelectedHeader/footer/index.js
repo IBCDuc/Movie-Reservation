@@ -7,8 +7,8 @@ const StickyFooter = ({ selectedSeats, totalPrice, formatPrice, onBookSeats, isB
       {selectedSeats?.length > 0 ? (
         <div className={styles.checkoutContainer}>
           <div className={styles.priceInfo}>
-            <span>{selectedSeats.length} Seats Selected</span>
-            <span className={styles.totalPrice}>{formatPrice(totalPrice)}</span>
+            <span style={{color: '#fff'}}>{selectedSeats.length} Seats Selected</span>
+            <span className={styles.totalPrice} style={{color: '#fff'}}>{formatPrice(totalPrice)}</span>
           </div>
           <button 
             className={styles.proceedButton}
